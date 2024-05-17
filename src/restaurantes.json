@@ -1,0 +1,49 @@
+{
+  "restaurant_name": "Super hero squad",
+  "restaurant_location": "Metro City",
+  "restaurant_type": ["Wok","Sandwich","Ensalada"],
+  "restaurant_img":"link foto",
+  "restaurant_avg_time": "Super tower",
+  "products": [
+    {
+      "product_name": "Molecule Man",
+      "product_price": 29,
+      "product_currency": "Euro",
+      "product_img":"link foto",
+      "product_description": "descripcion del producto",
+      "product_type": "Wok"
+    },
+    {
+      "product_name": "Molecule Man",
+      "product_price": 29,
+      "product_currency": "Euro",
+      "product_img":"link foto",
+      "product_description": "descripcion del producto",
+      "product_type": "Sandwich"
+    },
+    {
+      "product_name": "Molecule Man",
+      "product_price": 29,
+      "product_currency": "Euro",
+      "product_img":"link foto",
+      "product_description": "descripcion del producto",
+      "product_type": "Wok"
+    },
+    {
+      "product_name": "Molecule Man",
+      "product_price": 29,
+      "product_currency": "Euro",
+      "product_img":"link foto",
+      "product_description": "descripcion del producto",
+      "product_type": "Sandwich"
+    },
+    {
+      "product_name": "Molecule Man",
+      "product_price": 29,
+      "product_currency": "Euro",
+      "product_img":"link foto",
+      "product_description": "descripcion del producto",
+      "product_type": "Ensalada"
+    }
+  ]
+}

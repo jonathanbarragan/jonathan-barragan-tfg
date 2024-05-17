@@ -1,0 +1,37 @@
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Espacio entre elementos */
+    align-items: center; /* Alinea verticalmente en el centro */
+    padding: 10px; /* Espaciado interno */
+}
+
+.logo-web {
+    width: 30%; /* Ajusta el tamaño del logo */
+
+}
+.search-bar-Icon{
+    height: 60px;
+    width: 50px;
+    background-color: white;
+    display: grid;
+    place-items: center;
+    
+}
+.search-bar input{
+    background-color: white;
+    border: 1;
+    border-radius: 2px;
+    font-size: 18px;
+    padding: 15px;
+    height: 10%;
+    width: 50%;
+}
+.search-bar{
+    flex: 1; /* Deja que la barra de búsqueda ocupe todo el espacio disponible */
+    display: flex;
+    border: 1px;
+}
+
+.cart, .profile {
+    width: 40px; /* Tamaño ajustado */
+}

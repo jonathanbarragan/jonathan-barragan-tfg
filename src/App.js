@@ -34,7 +34,7 @@ function App() {
           <Image className="fondo" src='./Assets/JPG/fondo_app.jpg' />
           <Image className="logo" src="./Assets/PNG/logo.png" />
           <SearchBar placeholder="Escribe aqui..." ></SearchBar>
-          <Button onClick={handleLoginClick} className="button-left" variant="primary" >Login</Button>
+          <Button onClick={handleLoginClick} className="button-left" variant="primary" >Jona</Button>
           <Button onClick={handleRegisterClick} className="button-right" variant="primary">Register</Button>
         </div>
       </div>

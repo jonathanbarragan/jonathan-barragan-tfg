@@ -5,7 +5,9 @@
       "location": "Metro City",
       "type": ["Wok","Sandwich","Ensalada"],
       "img":"link foto",
-      "avg_time": "Super tower",
+      "min_price": 20,
+      "max_price": 50,
+      "avg_time": 20,
       "products": [
         {
           "name": "Molecule Man",
@@ -54,7 +56,63 @@
       "location": "Metro City",
       "type": ["Wok","Sandwich","Ensalada"],
       "img":"link foto",
-      "avg_time": "Super tower",
+      "min_price": 10,
+      "max_price": 30,
+      "avg_time": 40,
+      "products": [
+        {
+          "name": "Molecule Man",
+          "price": 29,
+          "currency": "Euro",
+          "img":"link foto",
+          "description": "descripcion del producto",
+          "type": "Wok"
+        },
+        {
+          "name": "Molecule Man",
+          "price": 29,
+          "currency": "Euro",
+          "img":"link foto",
+          "description": "descripcion del producto",
+          "type": "Sandwich"
+        }
+      ]
+    },
+    {
+      "name": "Restaurante 3",
+      "location": "Metro City",
+      "type": ["Wok","Sandwich","Ensalada"],
+      "img":"link foto",
+      "min_price": 20,
+      "max_price": 60,
+      "avg_time": 30,
+      "products": [
+        {
+          "name": "Molecule Man",
+          "price": 29,
+          "currency": "Euro",
+          "img":"link foto",
+          "description": "descripcion del producto",
+          "type": "Wok"
+        },
+        {
+          "name": "Molecule Man",
+          "price": 29,
+          "currency": "Euro",
+          "img":"link foto",
+          "description": "descripcion del producto",
+          "type": "Sandwich"
+        }
+      ]
+    },
+    {
+      "name": "Restaurante 4",
+      "location": "Metro City",
+      "type": ["Wok","Sandwich","Ensalada"],
+      "img":"link foto",
+      "min_price": 15,
+      "max_price": 40,
+      "avg_time": 35,
       "products": [
         {
           "name": "Molecule Man",

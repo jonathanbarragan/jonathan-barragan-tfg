@@ -1,14 +1,72 @@
 .resultados-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px; /* Espacio entre los elementos */
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* Espacio entre los elementos */
+}
+
+.restaurante-card {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  box-sizing: border-box;
+  flex: 1 1 calc(33.333% - 32px); /* Tres elementos por fila por defecto */
+  max-width: calc(33.333% - 32px); /* Asegurar que las cartas no crezcan más de un tercio */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 250px; /* Establecer una altura fija */
+}
+
+.restaurante-card h2 {
+  margin: 0;
+  font-size: 1.2em;
+  flex: 1; /* Permitir que el título crezca */
+}
+
+.restaurante-card p {
+  margin: 0;
+  font-size: 1em;
+  flex: 1; /* Permitir que la descripción crezca */
+}
+
+.restaurante-price{
+  color: gray;
+  size: 12px;
+  margin-top: auto;
+  text-align: right;
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
   .restaurante-card {
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px;
-    flex: 1 1 calc(33.333% - 32px); /* Ajusta los elementos en filas de 3 por defecto */
-    box-sizing: border-box;
+    flex: 1 1 calc(50% - 32px); /* Dos elementos por fila en pantallas medianas */
+    max-width: calc(50% - 32px);
   }
+}
+
+@media (max-width: 768px) {
+  .restaurante-card {
+    flex: 1 1 calc(100% - 32px); /* Un elemento por fila en pantallas pequeñas */
+    max-width: calc(100% - 32px);
+  }
+}
+
+.sort-dropdown {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.sort-dropdown label {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.sort-dropdown select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+}

@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import "./Register.css";
 import Restaurant from "./Restaurant";
 import { Login } from "./Login";
@@ -24,6 +24,15 @@ export const Register =() =>{
         setShowLogin(!showLogin);
     };
 
+    useEffect(() => {
+        const previousUrl = window.location.pathname;
+        window.history.pushState(null, "", `/Register`);
+    
+        return() => {
+            window.history.pushState(null, "", previousUrl);
+        }
+    });
+
     if (showLogin === false){
         return (
             <div className="container">
@@ -46,7 +55,7 @@ export const Register =() =>{
         )
     }else{
         return(
-            <Restaurant />
+            <Login />
         )
     }
 

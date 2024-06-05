@@ -1,0 +1,14 @@
+.resultados-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; /* Espacio entre los elementos */
+  }
+  
+  .restaurante-card {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    flex: 1 1 calc(33.333% - 32px); /* Ajusta los elementos en filas de 3 por defecto */
+    box-sizing: border-box;
+  }

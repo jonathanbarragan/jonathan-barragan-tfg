@@ -1,0 +1,34 @@
+.cart-container {
+    padding: 20px;
+}
+
+.products-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.product-foto {
+    width: 100px; /* Ajusta el tamaño de la imagen según sea necesario */
+    height: auto;
+}
+
+.product-info {
+    flex-grow: 1;
+}
+
+.product-quantity {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#purchase {
+    margin-top: 10px;
+}

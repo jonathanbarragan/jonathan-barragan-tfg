@@ -30,6 +30,10 @@
   flex: 1; /* Permitir que la descripción crezca */
 }
 
+.restaurante-foto{
+  height: 65%;
+  width: 100%;
+}
 .restaurante-price{
   color: gray;
   size: 12px;

@@ -1,0 +1,60 @@
+.productos-container {
+    max-width: 80%; /* Ajusta este valor según sea necesario */
+    margin: 0 auto; /* Centra el contenedor en la página */
+    padding: 16px; /* Añade algo de padding para dar espacio alrededor del contenido */
+  }
+  
+  .products-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espacio entre las tarjetas */
+  }
+  
+  .card.card-body {
+    flex: 1 1 calc(33.333% - 20px); /* Tres tarjetas por fila, ajusta según sea necesario */
+    box-sizing: border-box; /* Incluye padding y border en el ancho y alto */
+    padding: 20px; /* Añade algo de padding dentro de la tarjeta */
+    border: 1px solid #ddd; /* Añade un borde alrededor de la tarjeta */
+    border-radius: 8px; /* Añade bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade una sombra para dar profundidad */
+  }
+  
+  .product-item {
+    display: flex;
+    flex-direction: column; /* Para que los elementos se apilen verticalmente */
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 100%; /* Hace que el contenedor del producto ocupe todo el alto disponible */
+  }
+  
+  .product-foto{
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+    }
+
+  .product-info {
+    flex-grow: 1;
+    margin-bottom: 10px; /* Añade espacio entre la info del producto y el botón */
+  }
+  
+  .add_to_cart {
+    align-self: flex-end; /* Alinea el botón a la derecha */
+    margin-top: auto; /* Empuja el botón hacia la parte inferior del contenedor */
+  }
+  
+  @media (max-width: 1024px) {
+    .card.card-body {
+      flex: 1 1 calc(50% - 20px); /* Dos tarjetas por fila en pantallas medianas */
+      max-width: calc(50% - 20px);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .card.card-body {
+      flex: 1 1 calc(100% - 20px); /* Una tarjeta por fila en pantallas pequeñas */
+      max-width: calc(100% - 20px);
+    }
+  }
+  

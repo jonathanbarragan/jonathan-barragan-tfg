@@ -1,7 +1,9 @@
 import React, {useEffect} from "react"
 import { Resultados } from "./Resultados"
+import { Button, Image } from "react-bootstrap";
+import "./Productos.css"
 
-export const Productos = ({ restaurant, onBack }) => {
+export const Productos = ({ restaurant, onBack, addToCart }) => {
 
   useEffect(() => {
     const previousUrl = window.location.pathname;
@@ -10,23 +12,32 @@ export const Productos = ({ restaurant, onBack }) => {
     return() => {
         window.history.pushState(null, "", previousUrl);
     }
-},[restaurant.name]);
+  },[restaurant.name]);
+  
 
   return (
     <div className="productos-container">
       <button onClick={onBack}>Back</button>
-      <h2>{restaurant.name}</h2>
-      <p>{restaurant.location}</p>
-      <h3>Products:</h3>
-      <ul className="products-list">
-        {restaurant.products.map(product => (
-          <li className="product-item" key={product.name}>
-            <p>{product.name} - {product.price} {product.currency}</p>
-            <p>{product.description}</p>
-          </li>
-        ))}
-      </ul>
+        
+        <h2>{restaurant.name}</h2>
+        <p>{restaurant.location}</p>
+        <h3>Products:</h3>
+        <div className="products-list">
+          {restaurant.products.map(product => (
+            <div className="card card-body" key={product.name}>
+            <div className="product-item">
+              <div className="product-info">
+                <Image src={product.foto} className="product-foto" />
+                <p><b>{product.name} </b>- {product.price} {product.currency}</p>
+                <p>{product.description}</p>
+                </div>
+                <Button id="add_to_cart" className="add_to_cart" variant="success" onClick={() => addToCart(product)}>Add to Cart</Button>
+              </div>
+            </div>
+          ))}
+        </div>
     </div>
+
   );
 };
 

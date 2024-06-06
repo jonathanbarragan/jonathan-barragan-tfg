@@ -1,19 +1,35 @@
 {
   "restuarantes":[
     {
-      "name": "Super hero squad 1",
+      "name": "Wok and Bao",
       "location": "Metro City",
       "type": ["Wok","Sandwich","Ensalada"],
-      "img":"link foto",
+      "foto":"/Assets/PNG/WokBao.png",
       "min_price": 20,
       "max_price": 50,
       "avg_time": 20,
       "products": [
         {
+          "name": "Wok de verduras con gambas y noodles.",
+          "price": 29,
+          "currency": "Euro",
+          "foto":"/Assets/PNG/WokVerduras.png",
+          "description": "Preparado con maestría y sazonado con especias asiáticas, cada bocado te transportará a un viaje culinario lleno de aromas y texturas irresistibles.",
+          "type": "Wok"
+        },
+        {
+          "name": "Enasalada verde con mango y nueces",
+          "price": 29,
+          "currency": "Euro",
+          "foto":"/Assets/PNG/EnsaladaVerde.png",
+          "description": "Una combinación refrescante de lechugas mixtas, pepinos frescos y tomates cherry, realzada con trozos jugosos de mango y nueces crujientes.",
+          "type": "Ensalada"
+        },
+        {
           "name": "Molecule Man",
           "price": 29,
           "currency": "Euro",
-          "img":"link foto",
+          "foto":"link foto",
           "description": "descripcion del producto",
           "type": "Wok"
         },
@@ -21,7 +37,7 @@
           "name": "Molecule Man",
           "price": 29,
           "currency": "Euro",
-          "img":"link foto",
+          "foto":"link foto",
           "description": "descripcion del producto",
           "type": "Sandwich"
         },
@@ -29,33 +45,17 @@
           "name": "Molecule Man",
           "price": 29,
           "currency": "Euro",
-          "img":"link foto",
-          "description": "descripcion del producto",
-          "type": "Wok"
-        },
-        {
-          "name": "Molecule Man",
-          "price": 29,
-          "currency": "Euro",
-          "img":"link foto",
-          "description": "descripcion del producto",
-          "type": "Sandwich"
-        },
-        {
-          "name": "Molecule Man",
-          "price": 29,
-          "currency": "Euro",
-          "img":"link foto",
+          "foto":"link foto",
           "description": "descripcion del producto",
           "type": "Ensalada"
         }
       ]
     },
     {
-      "name": "hola 2",
+      "name": "Green Bites",
       "location": "Metro City",
       "type": ["Wok","Sandwich","Ensalada"],
-      "img":"link foto",
+      "foto":"/Assets/PNG/GreenBites.png",
       "min_price": 10,
       "max_price": 30,
       "avg_time": 40,
@@ -64,7 +64,7 @@
           "name": "Molecule Man",
           "price": 29,
           "currency": "Euro",
-          "img":"link foto",
+          "foto":"link foto",
           "description": "descripcion del producto",
           "type": "Wok"
         },
@@ -72,17 +72,17 @@
           "name": "Molecule Man",
           "price": 29,
           "currency": "Euro",
-          "img":"link foto",
+          "foto":"link foto",
           "description": "descripcion del producto",
           "type": "Sandwich"
         }
       ]
     },
     {
-      "name": "Restaurante 3",
+      "name": "Vacka",
       "location": "Metro City",
       "type": ["Wok","Sandwich","Ensalada"],
-      "img":"link foto",
+      "foto":"/Assets/PNG/Vacka.png",
       "min_price": 20,
       "max_price": 60,
       "avg_time": 30,
@@ -91,7 +91,7 @@
           "name": "Molecule Man",
           "price": 29,
           "currency": "Euro",
-          "img":"link foto",
+          "foto":"link foto",
           "description": "descripcion del producto",
           "type": "Wok"
         },
@@ -99,17 +99,17 @@
           "name": "Molecule Man",
           "price": 29,
           "currency": "Euro",
-          "img":"link foto",
+          "foto":"link foto",
           "description": "descripcion del producto",
           "type": "Sandwich"
         }
       ]
     },
     {
-      "name": "Restaurante 4",
+      "name": "Restaurante Xavier Pellicer",
       "location": "Metro City",
       "type": ["Wok","Sandwich","Ensalada"],
-      "img":"link foto",
+      "foto":"/Assets/PNG/RestauranteXavier.png",
       "min_price": 15,
       "max_price": 40,
       "avg_time": 35,
@@ -118,7 +118,7 @@
           "name": "Molecule Man",
           "price": 29,
           "currency": "Euro",
-          "img":"link foto",
+          "foto":"link foto",
           "description": "descripcion del producto",
           "type": "Wok"
         },
@@ -126,7 +126,61 @@
           "name": "Molecule Man",
           "price": 29,
           "currency": "Euro",
-          "img":"link foto",
+          "foto":"link foto",
+          "description": "descripcion del producto",
+          "type": "Sandwich"
+        }
+      ]
+    },
+    {
+      "name": "The Fork",
+      "location": "Metro City",
+      "type": ["Wok","Sandwich","Ensalada"],
+      "foto":"/Assets/PNG/TheFork.png",
+      "min_price": 15,
+      "max_price": 40,
+      "avg_time": 35,
+      "products": [
+        {
+          "name": "Molecule Man",
+          "price": 29,
+          "currency": "Euro",
+          "foto":"link foto",
+          "description": "descripcion del producto",
+          "type": "Wok"
+        },
+        {
+          "name": "Molecule Man",
+          "price": 29,
+          "currency": "Euro",
+          "foto":"link foto",
+          "description": "descripcion del producto",
+          "type": "Sandwich"
+        }
+      ]
+    },
+    {
+      "name": "Elektra",
+      "location": "Metro City",
+      "type": ["Wok","Sandwich","Ensalada"],
+      "foto":"/Assets/PNG/Elektra.png",
+      "min_price": 15,
+      "max_price": 40,
+      "avg_time": 35,
+      "products": [
+        {
+          "name": "Molecule Man",
+          "price": 29,
+          "currency": "Euro",
+          "foto":"link foto",
+          "description": "descripcion del producto",
+          "type": "Wok"
+        },
+        {
+          "name": "Molecule Man",
+          "price": 29,
+          "currency": "Euro",
+          "foto":"link foto",
           "description": "descripcion del producto",
           "type": "Sandwich"
         }

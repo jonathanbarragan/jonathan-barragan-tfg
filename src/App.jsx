@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button, Image } from "react-bootstrap";
 import './App.css';
 import SearchBar from "./Components/SearchBar";
@@ -6,7 +6,8 @@ import { Login } from "./Components/Login";
 import { Cabecera } from "./Components/Cabecera";
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { Register } from "./Components/Register";
-import {Resultados} from './Components/Resultados';
+import { Resultados } from './Components/Resultados';
+import { Carrito } from './Components/Carrito';
 
 function App() {
   
@@ -15,18 +16,23 @@ function App() {
   const [showLogin, setShowLogin] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [showSearchResults, setShowSearchResults] = useState(false);
+  const [cart, setCart] = useState([]); // Estado para los productos del carrito
+  const [showCart, setShowCart] = useState(false); // Estado para controlar si se muestra el carrito o no
 
   const handleLoginClick = () => {
     // Cambiar el estado para mostrar el componente Login
     setShowLogin(!showLogin);
     setShowRegister(false);
     setShowSearchResults(false);
+    setShowCart(false);
+
   };
   const handleReturnHomeClick = () => {
     // Cambiar el estado para mostrar LandingPage
     setShowLogin(false);
     setShowRegister(false);
     setShowSearchResults(false);
+    setShowCart(false);
 
   };
   const handleRegisterClick = () => {
@@ -34,12 +40,29 @@ function App() {
     setShowLogin(false);
     setShowSearchResults(false);
     setShowRegister(!showRegister);
+    setShowCart(false);
+
   };
   const handleSearchClick = () => {
-    // Cambiar el estado para mostrar elp componente Login
+    // Cambiar el estado para mostrar el componente Login
     setShowSearchResults(true);
     setShowLogin(false);
     setShowRegister(false);
+    setShowCart(false);
+
+  };
+
+  const handleCartClick = () => {
+    // Cambiar el estado para mostrar el carrito
+    setShowCart(true);
+    setShowSearchResults(true);
+    setShowLogin(false);
+    setShowRegister(false);
+
+  };
+
+  const addToCart = (product) => {
+    setCart([...cart, product]);
   };
 
   return (
@@ -68,12 +91,12 @@ function App() {
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
             handleSearchClick={handleSearchClick}
-            showSearchResults={showSearchResults}
+            onCartClick={handleCartClick} // Pasamos el manejador del clic del carrito
           />
           {showLogin && <Login onReturnHomeClick={handleReturnHomeClick}/>}
           {showRegister && <Register onClick={handleReturnHomeClick}/>}
-          {showSearchResults && <Resultados search={searchTerm} />}
-          <Button onClick={handleReturnHomeClick}> Return Home</Button>
+          {showSearchResults && <Resultados search={searchTerm} addToCart={addToCart} cart={cart} />}
+          {showCart && <Carrito cart={cart} />} 
         </div>
       )}
       

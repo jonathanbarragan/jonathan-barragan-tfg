@@ -3,8 +3,9 @@ import data from "../restaurantes.json";
 import {Image} from "react-bootstrap";
 import "./Resultados.css";
 import { Productos } from "./Productos";
+import { Carrito } from "./Carrito";
 
-export const Resultados = ({search})=>{
+export const Resultados = ({search, addToCart})=>{
     const restaurantes = data.restuarantes || [];
     const [selectedRestaurant, setSelectedRestaurant] = useState(null);
     const [sortCriteria, setSortCriteria] = useState('none');
@@ -36,10 +37,10 @@ export const Resultados = ({search})=>{
       )
     );
 
-    return(
+    return (
       <div>
-        {!selectedRestaurant ? (
-           <div>
+      {!selectedRestaurant ? (
+          <div>
             <div className="sort-dropdown">
               <label htmlFor="sort">Ordenar por: </label>
               <select id="sort" onChange={handleSortChange}>
@@ -49,24 +50,24 @@ export const Resultados = ({search})=>{
                 <option value="time">Tiempo</option>
               </select>
             </div>
-
-            <div className="resultados-container" >
+    
+            <div className="resultados-container">
               {filteredData.map(item => (
-                <div className="restaurante-card " key={item.name} onClick={()=> handleRestaurantClick(item)}>
+                <div className="restaurante-card " key={item.name} onClick={() => handleRestaurantClick(item)}>
+                  <Image src={item.foto} className="restaurante-foto"/>
                   <h2>{item.name}</h2>
                   <p>{item.location}</p>
                   <p className="restaurante-price"> {item.min_price}€ - {item.max_price}€ | ~{item.avg_time}min </p>
-
                 </div>
               ))}
             </div>
           </div>
-        ):(
-          <Productos restaurant={selectedRestaurant} onBack={() => setSelectedRestaurant(null)} />
+        ) : ( 
+              <Productos restaurant={selectedRestaurant} onBack={() => setSelectedRestaurant(null)} addToCart={addToCart} />       
         )}
-          
       </div>
-      
-    )
+    );
+    
+    
 }
 

@@ -13,7 +13,14 @@ export const Productos = ({ restaurant, onBack, addToCart }) => {
         window.history.pushState(null, "", previousUrl);
     }
   },[restaurant.name]);
-  
+
+  const handleAddToCart = (product) => {
+        const productWithRestaurant = {
+            ...product,
+            restaurant: restaurant.name,
+        };
+        addToCart(productWithRestaurant);
+    };
 
   return (
     <div className="productos-container">

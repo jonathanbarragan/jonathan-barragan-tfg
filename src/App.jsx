@@ -65,6 +65,11 @@ function App() {
     setCart([...cart, product]);
   };
 
+  const removeFromCart = (productIndex) => {
+    const newCart = cart.filter((_, index) => index !== productIndex);
+    setCart(newCart);
+};
+
   return (
     <div className="App">
       {showLogin === false && showRegister === false && showSearchResults=== false ?   (
@@ -95,8 +100,8 @@ function App() {
           />
           {showLogin && <Login onReturnHomeClick={handleReturnHomeClick}/>}
           {showRegister && <Register onClick={handleReturnHomeClick}/>}
-          {showSearchResults && <Resultados search={searchTerm} addToCart={addToCart} cart={cart} />}
-          {showCart && <Carrito cart={cart} />} 
+          {showSearchResults && <Resultados search={searchTerm} addToCart={addToCart} cart={cart} removeFromCart={removeFromCart} />}
+          {showCart && <Carrito cart={cart} removeFromCart={removeFromCart} />} 
         </div>
       )}
       

@@ -38,7 +38,7 @@ export const Productos = ({ restaurant, onBack, addToCart }) => {
                 <p><b>{product.name} </b>- {product.price} {product.currency}</p>
                 <p>{product.description}</p>
                 </div>
-                <Button id="add_to_cart" className="add_to_cart" variant="success" onClick={() => addToCart(product)}>Add to Cart</Button>
+                <Button id="add_to_cart" className="add_to_cart" variant="success" onClick={() => handleAddToCart(product)}>Add to Cart</Button>
               </div>
             </div>
           ))}

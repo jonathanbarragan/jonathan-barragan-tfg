@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Carrito.css';
 import { Button, Image, FormControl } from "react-bootstrap";
 
 export const Carrito = ({ cart, removeFromCart}) => {
-    const [cantidades, setCantidades] = useState(cart.map(() => 1));
+    const [cantidades, setCantidades] = useState([]);
+
+    useEffect(() => {
+        setCantidades(cart.map(() => 1)); // Inicializa las cantidades a 1 cada vez que cambie el carrito
+    }, [cart]);
 
     const aumentarCantidad = (index) => {
         setCantidades(cantidades.map((cantidad, i) => i === index ? cantidad + 1 : cantidad));
@@ -12,13 +16,16 @@ export const Carrito = ({ cart, removeFromCart}) => {
     const disminuirCantidad = (index) => {
         setCantidades(cantidades.map((cantidad, i) => i === index && cantidad > 1 ? cantidad - 1 : cantidad));
     };
+    const calcularTotal = () => {
+        return cart.reduce((total, product, index) => total + (product.price * cantidades[index]), 0);
+    };
 
     const handlePurchaseClick = () => {
         // Preparar los datos de los productos para el dataLayer
         const ecommerceData = {
             event: "purchase",
             ecommerce: {
-                value: cart.reduce((total, product) => total + (product.price * product.cantidad), 0),
+                value: calcularTotal(),
                 currency: 'Euro',
                 actionField: {
                     id: "T12345", // ID de transacción única (puedes generar uno dinámicamente si es necesario)
@@ -69,6 +76,8 @@ export const Carrito = ({ cart, removeFromCart}) => {
                     </div>
                 ))}
             </div>
+            <h3>Total: {calcularTotal()}€</h3> {/* Mostrar el precio total de la compra */}
+
             <Button id="purchase" variant="success" onClick={handlePurchaseClick}>Realizar Compra</Button>
         </div>
     );

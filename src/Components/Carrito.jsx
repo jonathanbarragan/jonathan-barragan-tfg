@@ -29,11 +29,11 @@ export const Carrito = ({ cart, removeFromCart}) => {
                 value: 10.00,
                 transaction_id: "T12345", // ID de transacción única (puedes generar uno dinámicamente si es necesario)
                 items: cart.map((product, index) => ({
-                    name: product.name,
-                    id: product.id,
-                    price: product.price,
-                    quantity: cantidades[index],
-                    restaurant: product.restaurant
+                    item_name: product.name,
+                    item_id: product.id,
+                    item_price: product.price,
+                    item_quantity: cantidades[index],
+                    item_restaurant: product.restaurant
                 })) 
             }
         };

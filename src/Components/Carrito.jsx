@@ -25,14 +25,9 @@ export const Carrito = ({ cart, removeFromCart}) => {
         const ecommerceData = {
             event: "purchase",
             ecommerce: {
-                value: calcularTotal(),
-                currency: 'Euro',
-                actionField: {
-                    id: "T12345", // ID de transacción única (puedes generar uno dinámicamente si es necesario)
-                    affiliation: "Online Store",
-                    tax: 0, // Impuestos (ajusta según sea necesario)
-                    shipping: 0, // Costos de envío (ajusta según sea necesario)
-                },
+                value: 10,
+                currency: 'EUR',
+                transaction_id: "T12345", // ID de transacción única (puedes generar uno dinámicamente si es necesario)
                 items: cart.map((product, index) => ({
                     name: product.name,
                     id: product.id,
@@ -77,7 +72,6 @@ export const Carrito = ({ cart, removeFromCart}) => {
                 ))}
             </div>
             <h3>Total: {calcularTotal()}€</h3> {/* Mostrar el precio total de la compra */}
-
             <Button id="purchase" variant="success" onClick={handlePurchaseClick}>Realizar Compra</Button>
         </div>
     );

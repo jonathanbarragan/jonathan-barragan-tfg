@@ -25,8 +25,8 @@ export const Carrito = ({ cart, removeFromCart}) => {
         const ecommerceData = {
             event: "purchase",
             ecommerce: {
-                value: 10,
                 currency: 'EUR',
+                value: 10.00,
                 transaction_id: "T12345", // ID de transacción única (puedes generar uno dinámicamente si es necesario)
                 items: cart.map((product, index) => ({
                     name: product.name,

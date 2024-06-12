@@ -23,7 +23,6 @@ export const Carrito = ({ cart, removeFromCart}) => {
     const handlePurchaseClick = () => {
         // Preparar los datos de los productos para el dataLayer
         const ecommerceData = {
-            event: "purchase",
             ecommerce: {
                 currency: 'EUR',
                 value: 10.00,

@@ -25,7 +25,7 @@ export const Productos = ({ restaurant, onBack, addToCart }) => {
         window.dataLayer.push({
           event: "add_to_cart",
           ecommerce: {
-            currency: "USD",
+            currency: "EUR",
             value: 30.03,
             items: [
             {

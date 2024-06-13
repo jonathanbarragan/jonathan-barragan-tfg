@@ -23,13 +23,19 @@ export const Carrito = ({ cart, removeFromCart}) => {
     const handlePurchaseClick = () => {
         window.dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
         window.dataLayer.push({
+        event: "purchase",
         ecommerce: {
+            transaction_id: "T_12345",
+            // Sum of (price * quantity) for all items.
+            value: 72.05,
+            tax: 3.60,
+            shipping: 5.99,
             currency: "USD",
-            value: 20.02,
+            coupon: "SUMMER_SALE",
             items: [
             {
-            item_id: "prueba",
-            item_name: "Producto web prueba",
+            item_id: "SKU_12345",
+            item_name: "Stan and Friends Tee",
             affiliation: "Google Merchandise Store",
             coupon: "SUMMER_FUN",
             discount: 2.22,
@@ -45,11 +51,10 @@ export const Carrito = ({ cart, removeFromCart}) => {
             item_variant: "green",
             location_id: "ChIJIQBpAG2ahYAR_6128GcTUEo",
             price: 10.01,
-            quantity: 2
-            }
-            ]
+            quantity: 3
+            }]
         }
-        });
+    });
         // Preparar los datos de los productos para el dataLayer
        /* const ecommerceData = {
             ecommerce: {

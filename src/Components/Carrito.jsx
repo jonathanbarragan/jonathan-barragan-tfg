@@ -21,15 +21,44 @@ export const Carrito = ({ cart, removeFromCart}) => {
     };
 
     const handlePurchaseClick = () => {
+        window.dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+        window.dataLayer.push({
+        ecommerce: {
+            currency: "USD",
+            value: 20.02,
+            items: [
+            {
+            item_id: "prueba",
+            item_name: "Producto web prueba",
+            affiliation: "Google Merchandise Store",
+            coupon: "SUMMER_FUN",
+            discount: 2.22,
+            index: 0,
+            item_brand: "Google",
+            item_category: "Apparel",
+            item_category2: "Adult",
+            item_category3: "Shirts",
+            item_category4: "Crew",
+            item_category5: "Short sleeve",
+            item_list_id: "related_products",
+            item_list_name: "Related Products",
+            item_variant: "green",
+            location_id: "ChIJIQBpAG2ahYAR_6128GcTUEo",
+            price: 10.01,
+            quantity: 2
+            }
+            ]
+        }
+        });
         // Preparar los datos de los productos para el dataLayer
-        const ecommerceData = {
+       /* const ecommerceData = {
             ecommerce: {
                 currency: 'EUR',
                 value: 10.00,
                 transaction_id: "T12345", // ID de transacción única (puedes generar uno dinámicamente si es necesario)
                 items: cart.map((product, index) => ({
                     item_name: product.name,
-                    item_id: product.id,
+                    item_id: '123456',
                     item_price: product.price,
                     item_quantity: cantidades[index],
                     item_restaurant: product.restaurant
@@ -40,7 +69,7 @@ export const Carrito = ({ cart, removeFromCart}) => {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push(ecommerceData);
 
-        console.log("Datos de compra enviados al dataLayer:", ecommerceData);
+        console.log("Datos de compra enviados al dataLayer:", ecommerceData);*/
     };
     return (
         <div className="cart-container">

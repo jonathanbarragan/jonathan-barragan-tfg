@@ -49,7 +49,11 @@ function App() {
     setShowLogin(false);
     setShowRegister(false);
     setShowCart(false);
-
+    window.dataLayer.push({
+      'ep_user_id':"pruebawebLocalhost",
+      'ep_user_logged': true,
+      'ep_user_city': 'Barcelona'
+      });
   };
 
   const handleCartClick = () => {

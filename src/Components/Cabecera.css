@@ -3,10 +3,11 @@
     justify-content: space-between; /* Espacio entre elementos */
     align-items: center; /* Alinea verticalmente en el centro */
     padding: 10px; /* Espaciado interno */
+    background-color: #F6FFF1;
 }
 
 .logo-web {
-    width: 30%; /* Ajusta el tamaño del logo */
+    width: 300px; /* Ajusta el tamaño del logo */
 
 }
 .search-bar-Icon{
@@ -30,8 +31,10 @@
     flex: 1; /* Deja que la barra de búsqueda ocupe todo el espacio disponible */
     display: flex;
     border: 1px;
+    margin-left: 50px;
 }
 
 .cart, .profile {
     width: 40px; /* Tamaño ajustado */
+    margin-right: 50px;
 }

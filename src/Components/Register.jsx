@@ -27,7 +27,6 @@ export const Register =() =>{
 
     return (
         <div>
-            <Cabecera/>
             <div className="container">
             <h2>Registro</h2>
             <form onSubmit={handleSubmit} className="card card-body shadow-lg">

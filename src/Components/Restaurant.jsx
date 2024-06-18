@@ -6,12 +6,11 @@ import { Cabecera } from "./Cabecera";
 import { useNavigate } from 'react-router-dom';
 
 export const Resultados = ({ search }) => {
-    const restaurantes = data.restaurantes || []; // Asegúrate de usar la estructura correcta del JSON
+    const restaurantes = data.restaurantes || [];
     const [sortCriteria, setSortCriteria] = useState('none');
     const navigate = useNavigate();
 
     const handleRestaurantClick = (restaurant) => {
-        // Navegar a la página de productos del restaurante seleccionado
         navigate(`/productos/${restaurant.name}`);
     };
 
@@ -32,13 +31,15 @@ export const Resultados = ({ search }) => {
         }
     };
 
-    const filteredData = sortData(restaurantes.filter(restaurante =>
-        restaurante.name.toLowerCase().includes(search.toLowerCase())
-    ));
+    const filteredData = sortData(restaurantes.filter(restaurante => {
+        const searchTerm = search.toLowerCase();
+        const restaurantMatches = restaurante.name.toLowerCase().includes(searchTerm);
+        const productsMatch = restaurante.products.some(product => product.name.toLowerCase().includes(searchTerm));
+        return restaurantMatches || productsMatch;
+    }));
 
     return (
         <div className="restaurante-fondo">
-            <Cabecera />
             <div className="restaurants-container">
                 <h2>Restaurantes:</h2>
                 <div className="sort-dropdown">

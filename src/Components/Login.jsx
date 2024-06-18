@@ -21,7 +21,6 @@ export const Login =() =>{
     
       return (
         <div> 
-          <Cabecera/>
           <div className="container">
             
             <form onSubmit={handleSubmit} className="card card-body shadow-lg">

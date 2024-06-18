@@ -32,7 +32,6 @@ export const Carrito = ({ cart, removeFromCart }) => {
 
     return (
         <div className='fondo-cart'>
-            <Cabecera/>
             <div class="cart-container">
                 <button onClick={() => navigate(-1)}>Volver</button>
 

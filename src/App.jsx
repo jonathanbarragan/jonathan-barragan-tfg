@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { Login } from "./Components/Login";
 import { Register } from "./Components/Register";
 import { Carrito } from './Components/Carrito';
 import { Home } from './Components/Home';
 import { Productos } from './Components/Productos'; 
 import { Resultados } from "./Components/Restaurant";
+import { Cabecera } from "./Components/Cabecera";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -21,7 +22,6 @@ function App() {
   const addToCart = (product) => {
     const existingProductIndex = cart.findIndex(
       (item) => item.name === product.name && item.restaurant === product.restaurant
-
     );
 
     let newCart = [];
@@ -42,18 +42,27 @@ function App() {
   const removeFromCart = (productIndex) => {
     const newCart = cart.filter((_, index) => index !== productIndex);
     setCart(newCart);
-    console.log("Cart after removing a product:", newCart); 
   };
 
+  // Obtener la ubicación actual
+  const location = useLocation();
+
+  // Verificar si estamos en la página Home
+  const isHomePage = location.pathname === '/';
+
   return (
-    <Routes>
-      <Route path="/" element={<Home setSearchTerm={setSearchTerm} />} />
-      <Route path="/Login" element={<Login />} />
-      <Route path="/Register" element={<Register />} />
-      <Route path="/Restaurant" element={<Resultados search={searchTerm} />} />
-      <Route path="/productos/:restauranteNombre" element={<Productos addToCart={addToCart} />} />
-      <Route path="/cart" element={<Carrito cart={cart} removeFromCart={removeFromCart} />} />
-    </Routes>
+    <>
+      {!isHomePage && <Cabecera searchTerm={searchTerm} setSearchTerm={setSearchTerm} />}
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
+        <Route path="/Restaurant" element={<Resultados search={searchTerm} />} />
+        <Route path="/productos/:restauranteNombre" element={<Productos addToCart={addToCart} />} />
+        <Route path="/cart" element={<Carrito cart={cart} removeFromCart={removeFromCart} />} />
+      </Routes>
+    </>
   );
 }
 

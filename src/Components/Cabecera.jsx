@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import "./Cabecera.css";
 import { Image } from "react-bootstrap";
 import SearchIcon from '@mui/icons-material/Search';
+import { useNavigate } from 'react-router-dom';
 
-export const Cabecera = ({ initialsearchTerm, initialShowResults, onReturnHomeCLick, onCartClick }) => {
-    const [searchTerm, setSearchTerm] = useState(initialsearchTerm);
+export const Cabecera = ({ searchTerm, setSearchTerm, initialShowResults }) => {
     const [showSearchResults, setShowSearchResults] = useState(initialShowResults);
+    const navigate = useNavigate();
 
     const handleSearchClick = () => {
-        // Cambiar el estado para mostrar el componente Login
         setShowSearchResults(true);
+        navigate('/Restaurant'); // Redirige a la página de resultados
     };
 
     return (
@@ -28,9 +29,8 @@ export const Cabecera = ({ initialsearchTerm, initialShowResults, onReturnHomeCL
                     <SearchIcon />
                 </div>
             </div>
-            {/* Manejador de eventos onClick agregado al icono del carrito */}
             <a href="/Cart">
-                <Image href="/Cart" className="cart" src="/Assets/PNG/cart.png" />
+                <Image className="cart" src="/Assets/PNG/cart.png" />
             </a>
             <a href="/Profile">
                 <Image className="profile" src="/Assets/PNG/profile.png" />

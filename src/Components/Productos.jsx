@@ -72,7 +72,6 @@ export const Productos = ({ addToCart }) => {
 
     return (
       <div className="fondo-product">
-        <Cabecera />
         <div className="productos-container">
             <button onClick={() => navigate(-1)}>Volver</button>
             <h2>{restaurant.name}</h2>

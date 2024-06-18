@@ -1,19 +1,23 @@
-import React, {useState} from 'react'
+import React from 'react';
 import "./SearchBar.css";
 import SearchIcon from '@mui/icons-material/Search';
-function SearchBar({searchTerm, setSearchTerm, handleSearchClick}) {
 
+function SearchBarHome({ searchTerm, setSearchTerm }) {
   return (
     <div className='search'>
         <div className='searchInputs'>
-            <input type='text'
+            <input 
+                type='text'
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Introduce una búsqueda"/>
-            <a href="/Restaurant" className='searchIcon'>< SearchIcon /> </a>
+                placeholder="Introduce una búsqueda"
+            />
+            <a href="/Restaurant" className='searchIcon'>
+                <SearchIcon />
+            </a>
         </div>
     </div>
-  )
+  );
 }
 
-export default SearchBar
+export default SearchBarHome;

@@ -4,6 +4,11 @@
   gap: 16px; /* Espacio entre los elementos */
 }
 
+.restaurants-container{
+  max-width: 80%; /* Ajusta este valor según sea necesario */
+    margin: 0 auto; /* Centra el contenedor en la página */
+    padding: 16px; /* Añade algo de padding para dar espacio alrededor del contenido */
+}
 .restaurante-card {
   background: #f9f9f9;
   border: 1px solid #ddd;
@@ -42,6 +47,9 @@
   justify-content: center;
 }
 
+.restaurante-fondo{
+  background-color: #F6FFF1;
+}
 @media (max-width: 1024px) {
   .restaurante-card {
     flex: 1 1 calc(50% - 32px); /* Dos elementos por fila en pantallas medianas */

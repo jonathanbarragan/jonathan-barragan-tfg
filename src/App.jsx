@@ -1,115 +1,59 @@
-import React, { useState } from "react";
-import { Button, Image } from "react-bootstrap";
-import './App.css';
-import SearchBar from "./Components/SearchBar";
+import React, { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import { Login } from "./Components/Login";
-import { Cabecera } from "./Components/Cabecera";
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { Register } from "./Components/Register";
-import { Resultados } from './Components/Resultados';
 import { Carrito } from './Components/Carrito';
+import { Home } from './Components/Home';
+import { Productos } from './Components/Productos'; 
+import { Resultados } from "./Components/Restaurant";
 
 function App() {
-  
-  // Estado para controlar la visibilidad del componente Login
-  const [showRegister, setShowRegister] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [showSearchResults, setShowSearchResults] = useState(false);
-  const [cart, setCart] = useState([]); // Estado para los productos del carrito
-  const [showCart, setShowCart] = useState(false); // Estado para controlar si se muestra el carrito o no
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem('cart');
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
 
-  const handleLoginClick = () => {
-    // Cambiar el estado para mostrar el componente Login
-    setShowLogin(!showLogin);
-    setShowRegister(false);
-    setShowSearchResults(false);
-    setShowCart(false);
-
-  };
-  const handleReturnHomeClick = () => {
-    // Cambiar el estado para mostrar LandingPage
-    setShowLogin(false);
-    setShowRegister(false);
-    setShowSearchResults(false);
-    setShowCart(false);
-
-  };
-  const handleRegisterClick = () => {
-    // Cambiar el estado para mostrar el componente Register
-    setShowLogin(false);
-    setShowSearchResults(false);
-    setShowRegister(!showRegister);
-    setShowCart(false);
-
-  };
-  const handleSearchClick = () => {
-    // Cambiar el estado para mostrar el componente Login
-    setShowSearchResults(true);
-    setShowLogin(false);
-    setShowRegister(false);
-    setShowCart(false);
-    window.dataLayer.push({
-      'ep_user_id':"pruebawebLocalhost",
-      'ep_user_logged': true,
-      'ep_user_city': 'Barcelona'
-      });
-  };
-
-  const handleCartClick = () => {
-    // Cambiar el estado para mostrar el carrito
-    setShowCart(true);
-    setShowSearchResults(true);
-    setShowLogin(false);
-    setShowRegister(false);
-
-  };
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (product) => {
-    setCart([...cart, product]);
+    const existingProductIndex = cart.findIndex(
+      (item) => item.name === product.name && item.restaurant === product.restaurant
+
+    );
+
+    let newCart = [];
+    if (existingProductIndex >= 0) {
+      newCart = cart.map((item, index) => {
+        if (index === existingProductIndex) {
+          return { ...item, quantity: item.quantity + 1 };
+        }
+        return item;
+      });
+    } else {
+      newCart = [...cart, { ...product, quantity: 1 }];
+    }
+
+    setCart(newCart);
   };
 
   const removeFromCart = (productIndex) => {
     const newCart = cart.filter((_, index) => index !== productIndex);
     setCart(newCart);
-};
+    console.log("Cart after removing a product:", newCart); 
+  };
 
   return (
-    <div className="App">
-      {showLogin === false && showRegister === false && showSearchResults=== false ?   (
-        <div className="home">
-          <Image className="fondo" src='./Assets/JPG/fondo_app.jpg' />
-          <Image onClick={handleReturnHomeClick} className="logo" src="./Assets/PNG/logo.png" />
-          <SearchBar
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
-            handleSearchClick={handleSearchClick}
-            showSearchResults={showSearchResults}
-          />
-          <Button id="open_chat" onClick={handleLoginClick} className="button-left" type="primary">
-            Login
-          </Button>
-          <Button variant="primary" onClick={handleRegisterClick} className="button-right">
-            Register
-          </Button>
-        </div>
-      ) : (
-        <div className="web">
-          <Cabecera 
-            onReturnHomeCLick={handleReturnHomeClick}
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
-            handleSearchClick={handleSearchClick}
-            onCartClick={handleCartClick} // Pasamos el manejador del clic del carrito
-          />
-          {showLogin && <Login onReturnHomeClick={handleReturnHomeClick}/>}
-          {showRegister && <Register onClick={handleReturnHomeClick}/>}
-          {showSearchResults && <Resultados search={searchTerm} addToCart={addToCart} cart={cart} removeFromCart={removeFromCart} />}
-          {showCart && <Carrito cart={cart} removeFromCart={removeFromCart} />} 
-        </div>
-      )}
-      
-    </div>
+    <Routes>
+      <Route path="/" element={<Home setSearchTerm={setSearchTerm} />} />
+      <Route path="/Login" element={<Login />} />
+      <Route path="/Register" element={<Register />} />
+      <Route path="/Restaurant" element={<Resultados search={searchTerm} />} />
+      <Route path="/productos/:restauranteNombre" element={<Productos addToCart={addToCart} />} />
+      <Route path="/cart" element={<Carrito cart={cart} removeFromCart={removeFromCart} />} />
+    </Routes>
   );
 }
 

@@ -39,6 +39,9 @@
     margin-bottom: 10px; /* Añade espacio entre la info del producto y el botón */
   }
   
+  .fondo-product{
+    background-color: #F6FFF1;
+  }
   .add_to_cart {
     align-self: flex-end; /* Alinea el botón a la derecha */
     margin-top: auto; /* Empuja el botón hacia la parte inferior del contenedor */

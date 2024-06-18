@@ -1,52 +1,52 @@
 {
-  "restuarantes":[
+  "restaurantes":[
     {
       "name": "Wok and Bao",
       "location": "Metro City",
       "type": ["Wok","Sandwich","Ensalada"],
       "foto":"/Assets/PNG/WokBao.png",
-      "min_price": 20,
-      "max_price": 50,
+      "min_price": 12,
+      "max_price": 24,
       "avg_time": 20,
       "products": [
         {
           "name": "Wok de verduras con gambas y noodles.",
-          "price": 29,
-          "currency": "Euro",
+          "price": 18,
+          "currency": "USD",
           "foto":"/Assets/PNG/WokVerduras.png",
           "description": "Preparado con maestría y sazonado con especias asiáticas, cada bocado te transportará a un viaje culinario lleno de aromas y texturas irresistibles.",
           "type": "Wok"
         },
         {
           "name": "Enasalada verde con mango y nueces",
-          "price": 29,
-          "currency": "Euro",
+          "price": 14,
+          "currency": "EUR",
           "foto":"/Assets/PNG/EnsaladaVerde.png",
           "description": "Una combinación refrescante de lechugas mixtas, pepinos frescos y tomates cherry, realzada con trozos jugosos de mango y nueces crujientes.",
           "type": "Ensalada"
         },
         {
-          "name": "Molecule Man",
-          "price": 29,
-          "currency": "Euro",
-          "foto":"link foto",
-          "description": "descripcion del producto",
-          "type": "Wok"
+          "name": "Ensalada Asiàtica de Mango y Langostinos",
+          "price": 16,
+          "currency": "EUR",
+          "foto":"/Assets/JPG/EnsaladaMangoLangostino.jpeg",
+          "description": "Combinación fresca y exótica que equilibra la dulzura del mango con la suculencia de los langostinos a la parrilla. Complementada con brotes de soja crujientes y un aderezo de jengibre y lima, cada bocado te transporta a los sabores vibrantes de Asia.",
+          "type": "Ensalada"
         },
         {
-          "name": "Molecule Man",
-          "price": 29,
-          "currency": "Euro",
-          "foto":"link foto",
-          "description": "descripcion del producto",
+          "name": "Carpaccio de Calabacín y Tomate",
+          "price": 24,
+          "currency": "EUR",
+          "foto":"/Assets/JPG/CarpaccioCalabacinTomate.jpg",
+          "description": "Disfruta de una combinación refrescante y vibrante de finas láminas de calabacín con tomates cherry frescos. Sazonado con aceite de oliva y adornado con notas de queso parmesano y albahaca fresca, cada bocado ofrece una explosión de sabores naturales y texturas delicadas.",
           "type": "Sandwich"
         },
         {
-          "name": "Molecule Man",
-          "price": 29,
-          "currency": "Euro",
-          "foto":"link foto",
-          "description": "descripcion del producto",
+          "name": "Tarta de Limón y Merengue",
+          "price": 12,
+          "currency": "EUR",
+          "foto":"/Assets/JPG/TartaLimonMerengue.jpg",
+          "description": "Experimenta la fusión perfecta entre la frescura del limón y la suavidad del merengue en cada deliciosa porción. Una experiencia única que cautivará tus sentidos desde el primer bocado.",
           "type": "Ensalada"
         }
       ]
@@ -63,7 +63,7 @@
         {
           "name": "Molecule Man",
           "price": 29,
-          "currency": "Euro",
+          "currency": "EUR",
           "foto":"link foto",
           "description": "descripcion del producto",
           "type": "Wok"
@@ -71,7 +71,7 @@
         {
           "name": "Molecule Man",
           "price": 29,
-          "currency": "Euro",
+          "currency": "EUR",
           "foto":"link foto",
           "description": "descripcion del producto",
           "type": "Sandwich"
@@ -90,7 +90,7 @@
         {
           "name": "Molecule Man",
           "price": 29,
-          "currency": "Euro",
+          "currency": "EUR",
           "foto":"link foto",
           "description": "descripcion del producto",
           "type": "Wok"
@@ -98,7 +98,7 @@
         {
           "name": "Molecule Man",
           "price": 29,
-          "currency": "Euro",
+          "currency": "EUR",
           "foto":"link foto",
           "description": "descripcion del producto",
           "type": "Sandwich"
@@ -117,7 +117,7 @@
         {
           "name": "Molecule Man",
           "price": 29,
-          "currency": "Euro",
+          "currency": "EUR",
           "foto":"link foto",
           "description": "descripcion del producto",
           "type": "Wok"
@@ -125,7 +125,7 @@
         {
           "name": "Molecule Man",
           "price": 29,
-          "currency": "Euro",
+          "currency": "EUR",
           "foto":"link foto",
           "description": "descripcion del producto",
           "type": "Sandwich"
@@ -144,7 +144,7 @@
         {
           "name": "Molecule Man",
           "price": 29,
-          "currency": "Euro",
+          "currency": "EUR",
           "foto":"link foto",
           "description": "descripcion del producto",
           "type": "Wok"
@@ -152,7 +152,7 @@
         {
           "name": "Molecule Man",
           "price": 29,
-          "currency": "Euro",
+          "currency": "EUR",
           "foto":"link foto",
           "description": "descripcion del producto",
           "type": "Sandwich"
@@ -171,7 +171,7 @@
         {
           "name": "Molecule Man",
           "price": 29,
-          "currency": "Euro",
+          "currency": "EUR",
           "foto":"link foto",
           "description": "descripcion del producto",
           "type": "Wok"
@@ -179,7 +179,7 @@
         {
           "name": "Molecule Man",
           "price": 29,
-          "currency": "Euro",
+          "currency": "EUR",
           "foto":"link foto",
           "description": "descripcion del producto",
           "type": "Sandwich"

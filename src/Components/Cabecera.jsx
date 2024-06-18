@@ -14,7 +14,9 @@ export const Cabecera = ({ initialsearchTerm, initialShowResults, onReturnHomeCL
 
     return (
         <div className="header-container">
-            <Image onClick={onReturnHomeCLick} className="logo-web" src="./Assets/PNG/logo.png" />
+            <a href="/"> 
+                <img className="logo-web" src="/Assets/PNG/logo.png" />
+            </a>
             <div className='search-bar'>
                 <input
                     type='text'
@@ -27,8 +29,12 @@ export const Cabecera = ({ initialsearchTerm, initialShowResults, onReturnHomeCL
                 </div>
             </div>
             {/* Manejador de eventos onClick agregado al icono del carrito */}
-            <Image onClick={onCartClick} className="cart" src="./Assets/PNG/cart.png" />
-            <Image className="profile" src="./Assets/PNG/profile.png" />
+            <a href="/Cart">
+                <Image href="/Cart" className="cart" src="/Assets/PNG/cart.png" />
+            </a>
+            <a href="/Profile">
+                <Image className="profile" src="/Assets/PNG/profile.png" />
+            </a>
         </div>
     );
 };

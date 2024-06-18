@@ -10,7 +10,7 @@ function SearchBar({searchTerm, setSearchTerm, handleSearchClick}) {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Introduce una búsqueda"/>
-            <div onClick={handleSearchClick} className='searchIcon'><SearchIcon /> </div>
+            <a href="/Restaurant" className='searchIcon'>< SearchIcon /> </a>
         </div>
     </div>
   )

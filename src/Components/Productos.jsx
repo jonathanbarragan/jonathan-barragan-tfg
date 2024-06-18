@@ -66,6 +66,10 @@ export const Productos = ({ addToCart }) => {
         addToCart(productWithRestaurant);
     };
 
+    if (!restaurant) {
+        return <div>Loading...</div>;
+    }
+
     return (
       <div className="fondo-product">
         <Cabecera />

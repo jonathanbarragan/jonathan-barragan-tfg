@@ -30,6 +30,37 @@ export const Carrito = ({ cart, removeFromCart }) => {
         return cart.reduce((total, product, index) => total + (product.price * cantidades[index]), 0);
     };
 
+    const getUniqueRestaurants = () => {
+        const restaurantNames = cart.map(product => product.restaurant);
+        return [...new Set(restaurantNames)]; // Eliminar duplicados
+    };
+
+    const handlePurchase = () => {
+        alert('Gracias por la compra');
+        const uniqueRestaurants = getUniqueRestaurants();
+
+        // Enviar evento a dataLayer
+        window.dataLayer.push({
+            event: "purchase",
+            ecommerce: {
+                transaction_id: "T_12345",
+                value: calcularTotal(),
+                currency: "EUR",
+                restaurants: uniqueRestaurants,
+                items: cart.map((product, index) => ({
+                    item_id: product.id || `SKU_${index + 1}`,
+                    item_name: product.name,
+                    price: product.price,
+                    quantity: cantidades[index],
+                }))
+            }
+        });
+    
+        // Opcionalmente, podrías vaciar el carrito después de la compra
+        setCantidades([]);
+        removeFromCart(); // Define esta función para vaciar el carrito si es necesario
+    };
+
     return (
         <div className='fondo-cart'>
             <div class="cart-container">
@@ -63,7 +94,7 @@ export const Carrito = ({ cart, removeFromCart }) => {
                 </div>
                 <div className='cart-total'>
                     <h3>Total: {calcularTotal()}€</h3>
-                    <Button variant='success'>Realizar Compra</Button>
+                    <Button variant='success' onClick={handlePurchase}>Realizar Compra</Button>
                     </div>
             </div>
         </div>

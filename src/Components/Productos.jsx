@@ -9,6 +9,11 @@ export const Productos = ({ addToCart }) => {
     const { restauranteNombre } = useParams();
     const [restaurant, setRestaurant] = useState(null);
     const navigate = useNavigate();
+    const [restaurantNames, setRestaurantNames] = useState(() => {
+        // Obtener el valor inicial desde localStorage
+        const savedRestaurantNames = localStorage.getItem('restaurantNames');
+        return savedRestaurantNames ? JSON.parse(savedRestaurantNames) : [];
+    });
 
     useEffect(() => {
         const fetchRestaurant = async () => {
@@ -28,41 +33,54 @@ export const Productos = ({ addToCart }) => {
             ...product,
             restaurant: restaurant.name,
         };
-        console.log(product.name);
-        window.dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+
+        // Actualizar restaurantNames y después usarlo en dataLayer
+        setRestaurantNames((prevRestaurantNames) => {
+            const updatedRestaurantNames = [...prevRestaurantNames, restaurant.name];
+
+            // Guardar en localStorage
+            localStorage.setItem('restaurantNames', JSON.stringify(updatedRestaurantNames));
+
+            // Actualizar dataLayer después de actualizar restaurantNames
+            window.dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
             window.dataLayer.push({
-            event: "add_to_cart",
-            ecommerce: {
-                transaction_id: "T_12345",
-                // Sum of (price * quantity) for all items.
-                value: product.value,
-                tax: 3.60,
-                shipping: 5.99,
-                currency: product.currency,
-                coupon: "SUMMER_SALE",
-                items: [
-                {
-                item_id: "SKU_12345",
-                item_name: product.name,
-                affiliation: "Google Merchandise Store",
-                coupon: "SUMMER_FUN",
-                discount: 2.22,
-                index: 0,
-                item_brand: "Google",
-                item_category: "Apparel",
-                item_category2: "Adult",
-                item_category3: "Shirts",
-                item_category4: "Crew",
-                item_category5: "Short sleeve",
-                item_list_id: "related_products",
-                item_list_name: "Related Products",
-                item_variant: "green",
-                location_id: "ChIJIQBpAG2ahYAR_6128GcTUEo",
-                price: product.price,
-                quantity: 1
-                }]
-            }
+                event: "add_to_cart",
+                ecommerce: {
+                    transaction_id: "T_12345",
+                    value: product.value,
+                    tax: 3.60,
+                    shipping: 5.99,
+                    currency: product.currency,
+                    coupon: "SUMMER_SALE",
+                    restaurant: updatedRestaurantNames,
+                    items: [
+                        {
+                            item_id: "SKU_12345",
+                            item_name: product.name,
+                            affiliation: "Google Merchandise Store",
+                            coupon: "SUMMER_FUN",
+                            discount: 2.22,
+                            index: 0,
+                            item_brand: "Google",
+                            item_category: "Apparel",
+                            item_category2: "Adult",
+                            item_category3: "Shirts",
+                            item_category4: "Crew",
+                            item_category5: "Short sleeve",
+                            item_list_id: "related_products",
+                            item_list_name: "Related Products",
+                            item_variant: "green",
+                            location_id: "ChIJIQBpAG2ahYAR_6128GcTUEo",
+                            price: product.price,
+                            quantity: 1
+                        }
+                    ]
+                }
+            });
+
+            return updatedRestaurantNames;
         });
+
         addToCart(productWithRestaurant);
     };
 

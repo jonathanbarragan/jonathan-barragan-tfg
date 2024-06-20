@@ -39,8 +39,8 @@ export const Carrito = ({ cart, removeFromCart }) => {
         
         const uniqueRestaurants = getUniqueRestaurants();
 
-        dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
-        dataLayer.push({
+        window.dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+        window.dataLayer.push({
         event: "purchase",
         ecommerce: {
             transaction_id: "T_12345",

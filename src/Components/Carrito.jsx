@@ -36,10 +36,11 @@ export const Carrito = ({ cart, removeFromCart }) => {
     };
 
     const handlePurchase = () => {
-        alert('Gracias por la compra');
+        
         const uniqueRestaurants = getUniqueRestaurants();
 
         // Enviar evento a dataLayer
+        window.dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
         window.dataLayer.push({
             event: "purchase",
             ecommerce: {
@@ -55,7 +56,7 @@ export const Carrito = ({ cart, removeFromCart }) => {
                 }))
             }
         });
-    
+        alert('Gracias por la compra');
         // Opcionalmente, podrías vaciar el carrito después de la compra
         setCantidades([]);
         removeFromCart(); // Define esta función para vaciar el carrito si es necesario

@@ -1,24 +1,28 @@
 import React, {useState, useEffect} from "react"
 import "./Login.css";
 import { Button, Image } from "react-bootstrap";
+import {auth, app} from "../firebase"
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
-import { Register } from "./Register";
-import { Cabecera } from "./Cabecera";
 
 export const Login =() =>{
     const [email, setEmail] = useState('');
-    const [pass,setPass] = useState('');
-    const [showRegister, setShowRegister] = useState(false);
+    const [password,setPassword] = useState('');
+    const navigate = useNavigate('');
 
     const handleSubmit =(e) => {
-        e.preventDefault();
-        console.log(email);
-    }
-    const handleRegisterClick = () => {
-        // Cambiar el estado para mostrar el componente Register
-        setShowRegister(!showRegister);
-    };
-    
+      e.preventDefault();
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+          navigate("/Restaurant");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }    
       return (
         <div> 
           <div className="container">
@@ -36,8 +40,8 @@ export const Login =() =>{
               />
               <label htmlFor="password">Password</label>
               <input 
-                value={pass} 
-                onChange={(e) => setPass(e.target.value)} 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
                 type="password" 
                 placeholder="********" 
                 id="password" 

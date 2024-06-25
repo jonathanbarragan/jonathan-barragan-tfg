@@ -39,11 +39,6 @@ function App() {
     setCart(newCart);
   };
 
-  const removeFromCart = (productIndex) => {
-    const newCart = cart.filter((_, index) => index !== productIndex);
-    setCart(newCart);
-  };
-
   // Obtener la ubicación actual
   const location = useLocation();
 
@@ -55,12 +50,12 @@ function App() {
       {!isHomePage && <Cabecera searchTerm={searchTerm} setSearchTerm={setSearchTerm} />}
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/Restaurant" element={<Resultados search={searchTerm} />} />
         <Route path="/productos/:restauranteNombre" element={<Productos addToCart={addToCart} />} />
-        <Route path="/cart" element={<Carrito cart={cart} removeFromCart={removeFromCart} />} />
+        <Route path="/cart" element={<Carrito cart={cart} setCart={setCart} />} />
       </Routes>
     </>
   );

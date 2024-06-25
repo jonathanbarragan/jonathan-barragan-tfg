@@ -4,7 +4,7 @@ import { Button, Image, FormControl } from "react-bootstrap";
 import { Cabecera } from './Cabecera';
 import { useNavigate, useParams } from 'react-router-dom';
 
-export const Carrito = ({ cart, removeFromCart }) => {
+export const Carrito = ({ cart, setCart }) => {
     const [cantidades, setCantidades] = useState([]);
     const navigate = useNavigate();
 
@@ -26,6 +26,7 @@ export const Carrito = ({ cart, removeFromCart }) => {
         }
     };
 
+
     const calcularTotal = () => {
         return cart.reduce((total, product, index) => total + (product.price * cantidades[index]), 0);
     };
@@ -33,6 +34,16 @@ export const Carrito = ({ cart, removeFromCart }) => {
     const getUniqueRestaurants = () => {
         const restaurantNames = cart.map(product => product.restaurant);
         return [...new Set(restaurantNames)]; // Eliminar duplicados
+    };
+
+    const removeFromCart = (index) => {
+        const newCart = [...cart];
+        newCart.splice(index, 1);
+        setCart(newCart);
+
+        const newCantidades = [...cantidades];
+        newCantidades.splice(index, 1);
+        setCantidades(newCantidades);
     };
 
     const handlePurchase = () => {
@@ -68,7 +79,7 @@ export const Carrito = ({ cart, removeFromCart }) => {
         alert('Gracias por la compra');
         // Opcionalmente, podrías vaciar el carrito después de la compra
         setCantidades([]);
-        removeFromCart(); // Define esta función para vaciar el carrito si es necesario
+        setCart([]); // Define esta función para vaciar el carrito si es necesario
     };
 
     return (

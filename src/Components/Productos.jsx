@@ -77,10 +77,8 @@ export const Productos = ({ addToCart }) => {
                     ]
                 }
             });
-
             return updatedRestaurantNames;
         });
-
         addToCart(productWithRestaurant);
     };
 

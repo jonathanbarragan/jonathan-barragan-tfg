@@ -38,62 +38,32 @@ export const Carrito = ({ cart, removeFromCart }) => {
     const handlePurchase = () => {
         
         const uniqueRestaurants = getUniqueRestaurants();
+        const total = calcularTotal();
+        const items = cart.map((product, index) => ({
+            item_id: product.id,
+            item_name: product.name,
+            affiliation: product.restaurant,
+            price: product.price,
+            quantity: cantidades[index],
+            item_brand: product.brand,
+            item_category: product.category,
+            item_variant: product.variant
+        }));
 
         window.dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
         window.dataLayer.push({
-        event: "purchase",
-        ecommerce: {
-            transaction_id: "T_12345",
-            // Sum of (price * quantity) for all items.
-            value: 72.05,
-            tax: 3.60,
-            shipping: 5.99,
-            currency: "USD",
-            coupon: "SUMMER_SALE",
-            items: [
-            {
-            item_id: "SKU_12345",
-            item_name: "Stan and Friends Tee",
-            affiliation: "Google Merchandise Store",
-            coupon: "SUMMER_FUN",
-            discount: 2.22,
-            index: 0,
-            item_brand: "Google",
-            item_category: "Apparel",
-            item_category2: "Adult",
-            item_category3: "Shirts",
-            item_category4: "Crew",
-            item_category5: "Short sleeve",
-            item_list_id: "related_products",
-            item_list_name: "Related Products",
-            item_variant: "green",
-            location_id: "ChIJIQBpAG2ahYAR_6128GcTUEo",
-            price: 10.01,
-            quantity: 3
-            },
-            {
-            item_id: "SKU_12346",
-            item_name: "Google Grey Women's Tee",
-            affiliation: "Google Merchandise Store",
-            coupon: "SUMMER_FUN",
-            discount: 3.33,
-            index: 1,
-            item_brand: "Google",
-            item_category: "Apparel",
-            item_category2: "Adult",
-            item_category3: "Shirts",
-            item_category4: "Crew",
-            item_category5: "Short sleeve",
-            item_list_id: "related_products",
-            item_list_name: "Related Products",
-            item_variant: "gray",
-            location_id: "ChIJIQBpAG2ahYAR_6128GcTUEo",
-            price: 21.01,
-            promotion_id: "P_12345",
-            promotion_name: "Summer Sale",
-            quantity: 2
-            }]
-        }
+            event: "purchase",
+            ecommerce: {
+                transaction_id: "T_12345",
+                // Sum of (price * quantity) for all items.
+                ep_restaurant_list: uniqueRestaurants,
+                value: total,
+                tax: 3.60,
+                shipping: 5.99,
+                currency: "USD",
+                coupon: "SUMMER_SALE",
+                items: items
+            }
         });
         alert('Gracias por la compra');
         // Opcionalmente, podrías vaciar el carrito después de la compra

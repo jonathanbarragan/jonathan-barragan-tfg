@@ -56,7 +56,7 @@ export const Carrito = ({ cart, removeFromCart }) => {
             ecommerce: {
                 transaction_id: "T_12345",
                 // Sum of (price * quantity) for all items.
-                ep_restaurant_list: uniqueRestaurants,
+                restaurantList: uniqueRestaurants,
                 value: total,
                 tax: 3.60,
                 shipping: 5.99,

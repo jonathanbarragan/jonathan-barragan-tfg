@@ -31,11 +31,11 @@ export const Carrito = ({ cart, setCart }) => {
         return cart.reduce((total, product, index) => total + (product.price * cantidades[index]), 0);
     };
 
-    const getUniqueRestaurants = () => {
+    /*const getUniqueRestaurants = () => {
         const restaurantNames = cart.map(product => product.restaurant);
         return [...new Set(restaurantNames)]; // Eliminar duplicados
     };
-
+*/
     const removeFromCart = (index) => {
         const newCart = [...cart];
         newCart.splice(index, 1);
@@ -48,7 +48,7 @@ export const Carrito = ({ cart, setCart }) => {
 
     const handlePurchase = () => {
         
-        const uniqueRestaurants = getUniqueRestaurants();
+       // const uniqueRestaurants = getUniqueRestaurants();
         const total = calcularTotal();
         const items = cart.map((product, index) => ({
             item_id: product.id,
@@ -67,7 +67,7 @@ export const Carrito = ({ cart, setCart }) => {
             ecommerce: {
                 transaction_id: "T_12345",
                 // Sum of (price * quantity) for all items.
-                restaurantList: uniqueRestaurants,
+                //restaurantList: uniqueRestaurants,
                 value: total,
                 tax: 3.60,
                 shipping: 5.99,

@@ -44,13 +44,14 @@ export const Productos = ({addToCart }) => {
                  value: product.value,
                  currency: product.currency,
                  coupon: "SUMMER_SALE",
-                 items: [{
-                         item_id: product.id,
-                         item_name: product.name,
-                         affiliation: restaurant.name,
-                         price: product.price,       
-                             }
-                         ]
+                 items: [
+                    {
+                        item_id: product.id,
+                        item_name: product.name,
+                        affiliation: restaurant.name,
+                        price: product.price,       
+                    }
+                ]
              }
          });
     };

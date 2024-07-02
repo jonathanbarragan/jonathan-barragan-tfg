@@ -7,7 +7,7 @@ import { Home } from './Components/Home';
 import { Productos } from './Components/Productos'; 
 import { Resultados } from "./Components/Restaurant";
 import { Cabecera } from "./Components/Cabecera";
-
+import { Profile } from "./Components/Profile";
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [cart, setCart] = useState(() => {

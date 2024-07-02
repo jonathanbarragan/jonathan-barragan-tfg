@@ -4,12 +4,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
 
 function SearchBarHome({ searchTerm, setSearchTerm }) {
-  const [showSearchResults, setShowSearchResults] = useState(false);
   const navigate = useNavigate();
 
   const handleSearchClick = () => {
-    setShowSearchResults(true);
-    navigate('/Restaurant'); // Redirige a la página de resultados
+    navigate('/Restaurant'); 
   };
 
   return (

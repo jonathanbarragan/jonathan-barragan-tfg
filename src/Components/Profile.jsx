@@ -22,6 +22,11 @@ export const Profile = () => {
   const handleSignOut = () => {
     const auth = getAuth();
     signOut(auth).then(() => {
+      window.dataLayer.push({ ecommerce: null });
+        window.dataLayer.push({
+          event: "logout",
+          
+        });
       localStorage.removeItem('user');
       navigate("/");
     }).catch((error) => {
@@ -39,7 +44,7 @@ export const Profile = () => {
                 <h2 className="text-center">Perfil de {userData.displayName}</h2>
                 <div className="profile-info">
                   <p><strong>Email:</strong> {userData.email}</p>
-                  <p><strong>Dirección:</strong> {userData.address || 'No especificada'}</p>
+                  <p><strong>Dirección:</strong> {userData.direction || 'No especificada'}</p>
                   <p><strong>Ciudad:</strong> {userData.city || 'No especificada'}</p>
                 </div>
                 <Button onClick={handleSignOut} variant="danger" className="mt-3">Cerrar sesión</Button>

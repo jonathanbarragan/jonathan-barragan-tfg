@@ -11,45 +11,46 @@ export const Register = () => {
     const [password, setPassword] = useState('');
     const [direction, setDirection] = useState('');
     const [city, setCity] = useState('');
+    const [error, setError] = useState(null);
     const navigate = useNavigate();
     const auth = getAuth(); // Initialize auth here
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
+        try {
+            // Verificar si el correo electrónico ya está en uso
+            const existingUser = await auth.fetchSignInMethodsForEmail(email);
+            if (existingUser.length > 0) {
+                throw new Error('auth/email-already-in-use');
+            }
 
-                // Actualizar el perfil del usuario
-                updateProfile(user, {
-                    displayName: name,
-                }).then(() => {
-                    console.log("Perfil actualizado:", user);
-                    
-                    const db = getFirestore();
-                    setDoc(doc(db, "users", user.uid), {
-                        direction: direction,
-                        city: city
-                    });
+            // Crear el usuario con correo y contraseña
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
 
-                    window.dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
-                    window.dataLayer.push({
-                        event: "sign_up",
-                        user_id: user.uid,
-                        user_city:user.city
-                    });
-
-                    navigate("/Login");
-                }).catch((error) => {
-                    console.error("Error actualizando el perfil:", error);
-                });
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(error);
+            // Actualizar el perfil del usuario
+            await updateProfile(user, {
+                displayName: name,
             });
-    }
+
+            // Guardar la dirección y ciudad en Firestore
+            const db = getFirestore();
+            await setDoc(doc(db, "users", user.uid), {
+                direction: direction,
+                city: city
+            });
+
+            console.log("Usuario registrado exitosamente:", user);
+
+            navigate("/Login");
+        } catch (error) {
+            if (error.code === 'auth/email-already-in-use') {
+                setError('El correo electrónico ya está en uso. Por favor, utiliza otro correo electrónico.');
+            } else {
+                setError('Error al registrar el usuario: ' + error.message);
+            }
+        }
+    };
 
     return (
         <div>
@@ -68,8 +69,9 @@ export const Register = () => {
                     <input value={city} onChange={(e) => setCity(e.target.value)} type="text" placeholder="Barcelona" id="city" name="city" className="textBox" />
                     <Button type="submit" className="btn-login">Register</Button>
                     <Button href="/Login" className="btn-register">Si ya tienes una cuenta, Inicia Sesión</Button>
+                    {error && <p className="error">{error}</p>}
                 </form>
             </div>
         </div>
-    )
-}
+    );
+};

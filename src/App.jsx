@@ -8,6 +8,8 @@ import { Productos } from './Components/Productos';
 import { Resultados } from "./Components/Restaurant";
 import { Cabecera } from "./Components/Cabecera";
 import { Profile } from "./Components/Profile";
+import { Footer } from "./Components/Footer";
+
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [cart, setCart] = useState(() => {
@@ -58,6 +60,8 @@ function App() {
         <Route path="/productos/:restauranteNombre" element={<Productos addToCart={addToCart} />} />
         <Route path="/cart" element={<Carrito cart={cart} setCart={setCart} />} />
       </Routes>
+      {!isHomePage && <Footer />}
+
     </>
   );
 }

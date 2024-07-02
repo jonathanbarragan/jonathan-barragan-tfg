@@ -34,6 +34,13 @@ export const Login = () => {
       .catch((error) => {
         setError(error.message); // Guardar el mensaje de error en el estado
         setLoading(false); // Desactivar el estado de carga
+        
+        window.dataLayer.push({ ecommerce: null });
+        window.dataLayer.push({
+          event: "login_error",
+          error: error.message,
+        });
+
       });
   };
   const handleClose = () => {

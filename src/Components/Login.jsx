@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Login.css";
-import { Button } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import { auth, db } from "../firebase"; // Importar auth y db desde firebase.js
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore"; // Importar Firestore
@@ -13,24 +13,32 @@ export const Login = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const signIn = async (e) => {
+  const signIn = (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        localStorage.setItem('user', JSON.stringify(user));
+        // Pushing data to the data layer for analytics purposes
+        window.dataLayer.push({ ecommerce: null });
+        window.dataLayer.push({
+          event: "login",
+          user_id: user.uid,
+        });
 
-       signInWithEmailAndPassword(auth, email, password).then((userCredential)=>{
-          const user = userCredential.user;
-          // Pushing data to the data layer for analytics purposes
-          window.dataLayer.push({ ecommerce: null });
-          window.dataLayer.push({
-            event: "login",
-            user_id: user.uid,
-          });
-
-          // Redirigir al usuario a la página de Restaurant
-          navigate("/Restaurant");
-       } );
-      }
+        // Redirigir al usuario a la página de Restaurant
+        navigate("/Restaurant");
+      })
+      .catch((error) => {
+        setError(error.message); // Guardar el mensaje de error en el estado
+        setLoading(false); // Desactivar el estado de carga
+      });
+  };
+  const handleClose = () => {
+    setError(null); // Limpiar el estado de error al cerrar el pop-up
+  };
   return (
     <div>
       <div className="container">
@@ -66,6 +74,19 @@ export const Login = () => {
           {error && <p className="error">{error}</p>}
         </form>
       </div>
+      <Modal show={error !== null} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Error de inicio de sesión</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Incorrect email or passoword</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cerrar
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

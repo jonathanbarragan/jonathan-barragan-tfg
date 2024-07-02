@@ -1,0 +1,29 @@
+.profile-container {
+    margin-top: 20px;
+    padding: 20px;
+  }
+  
+  .profile-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .profile-info {
+    margin-bottom: 20px;
+  }
+  
+  .profile-info p {
+    margin-bottom: 10px;
+  }
+  
+  .profile-info p strong {
+    font-weight: bold;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  

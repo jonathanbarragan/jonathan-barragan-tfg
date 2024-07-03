@@ -1,8 +1,10 @@
+// Register.js
 import React, { useState } from "react";
 import "./Register.css";
 import { Button } from "react-bootstrap";
-import { getFirestore, doc, setDoc } from "firebase/firestore"; 
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth, db } from "../firebase"; // Importar auth y db desde firebase.js
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore"; // Importar Firestore
 import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
@@ -11,46 +13,45 @@ export const Register = () => {
     const [password, setPassword] = useState('');
     const [direction, setDirection] = useState('');
     const [city, setCity] = useState('');
-    const [error, setError] = useState(null);
     const navigate = useNavigate();
-    const auth = getAuth(); // Initialize auth here
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        try {
-            // Verificar si el correo electrónico ya está en uso
-            const existingUser = await auth.fetchSignInMethodsForEmail(email);
-            if (existingUser.length > 0) {
-                throw new Error('auth/email-already-in-use');
-            }
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
 
-            // Crear el usuario con correo y contraseña
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            const user = userCredential.user;
+                // Actualizar el perfil del usuario
+                updateProfile(user, {
+                    displayName: name,
+                    // photoURL: "URL_de_foto_si_tienes" // Puedes añadir una URL de foto si es necesario
+                }).then(() => {
+                    console.log("Perfil actualizado:", user);
 
-            // Actualizar el perfil del usuario
-            await updateProfile(user, {
-                displayName: name,
+                    // Guardar dirección y ciudad en Firestore
+                    setDoc(doc(db, "users", user.uid), {
+                        direction: direction,
+                        city: city
+                    });
+
+                    window.dataLayer.push({ ecommerce: null });  // Limpiar el objeto ecommerce anterior.
+                    window.dataLayer.push({
+                        event: "purchase",
+                        user_id: user.uid,
+                        user_city: city
+                    });
+
+                    navigate("/Login");
+                }).catch((error) => {
+                    console.error("Error actualizando el perfil:", error);
+                });
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(error);
             });
-
-            // Guardar la dirección y ciudad en Firestore
-            const db = getFirestore();
-            await setDoc(doc(db, "users", user.uid), {
-                direction: direction,
-                city: city
-            });
-
-            console.log("Usuario registrado exitosamente:", user);
-
-            navigate("/Login");
-        } catch (error) {
-            if (error.code === 'auth/email-already-in-use') {
-                setError('El correo electrónico ya está en uso. Por favor, utiliza otro correo electrónico.');
-            } else {
-                setError('Error al registrar el usuario: ' + error.message);
-            }
-        }
-    };
+    }
 
     return (
         <div>
@@ -69,9 +70,8 @@ export const Register = () => {
                     <input value={city} onChange={(e) => setCity(e.target.value)} type="text" placeholder="Barcelona" id="city" name="city" className="textBox" />
                     <Button type="submit" className="btn-login">Register</Button>
                     <Button href="/Login" className="btn-register">Si ya tienes una cuenta, Inicia Sesión</Button>
-                    {error && <p className="error">{error}</p>}
                 </form>
             </div>
         </div>
-    );
-};
+    )
+}

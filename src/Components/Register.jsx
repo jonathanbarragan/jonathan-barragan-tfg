@@ -36,7 +36,7 @@ export const Register = () => {
 
                     window.dataLayer.push({ ecommerce: null });  // Limpiar el objeto ecommerce anterior.
                     window.dataLayer.push({
-                        event: "purchase",
+                        event: "sign_up",
                         user_id: user.uid,
                         user_city: city
                     });

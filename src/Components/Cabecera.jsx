@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Cabecera.css";
 import { Image } from "react-bootstrap";
 import SearchIcon from '@mui/icons-material/Search';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export const Cabecera = ({ searchTerm, setSearchTerm, initialShowResults }) => {
     const [showSearchResults, setShowSearchResults] = useState(initialShowResults);
@@ -15,9 +15,9 @@ export const Cabecera = ({ searchTerm, setSearchTerm, initialShowResults }) => {
 
     return (
         <div className="header-container">
-            <a href="/"> 
+            <Link to="/"> 
                 <img className="logo-web" src="/Assets/PNG/logo.png" />
-            </a>
+            </Link >
             <div className='search-bar'>
                 <input
                     type='text'
@@ -29,12 +29,12 @@ export const Cabecera = ({ searchTerm, setSearchTerm, initialShowResults }) => {
                     <SearchIcon />
                 </div>
             </div>
-            <a href="/Cart">
+            <Link to="/Cart">
                 <Image className="cart" src="/Assets/PNG/cart.png" />
-            </a>
-            <a href="/Profile">
+            </Link>
+            <Link to="/Profile">
                 <Image className="profile" src="/Assets/PNG/profile.png" />
-            </a>
+            </Link>
         </div>
     );
 };

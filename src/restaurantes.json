@@ -65,7 +65,7 @@
           "price": 13,
           "currency": "EUR",
           "foto":"/Assets/JPG/TacosPescadoMango.jpg",
-          "description": "descripcion del producto",
+          "description": "Tacos de pescado blanco perfectamente sazonados y a la parrilla, servidos en tortillas de maíz frescas, acompañados de una vibrante salsa de mango, aguacate y cilantro.",
           "type": "Wok"
         },
         {
@@ -73,7 +73,7 @@
           "price": 15,
           "currency": "EUR",
           "foto":"/Assets/PNG/BowlBudda.png",
-          "description": "descripcion del producto",
+          "description": "Un nutritivo bowl que combina garbanzos tiernos y una variedad de verduras asadas, todo sobre una base de quinoa esponjosa. ",
           "type": "Sandwich"
         }
       ]
@@ -92,7 +92,7 @@
           "price": 11,
           "currency": "EUR",
           "foto":"/Assets/JPG/PechugaPollo.jpg",
-          "description": "descripcion del producto",
+          "description": "ugosa pechuga de pollo marinada en hierbas y ajo, asada a la perfección y acompañada de batatas asadas doradas.",
           "type": "Wok"
         },
         {
@@ -100,7 +100,7 @@
           "price": 14,
           "currency": "EUR",
           "foto":"/Assets/JPG/PolloCurry.jpg",
-          "description": "descripcion del producto",
+          "description": "Tiernos trozos de pollo cocinados en una rica y cremosa salsa de curry hecha con leche de coco, combinada con una variedad de verduras frescas. ",
           "type": "Sandwich"
         }
       ]
@@ -119,7 +119,7 @@
           "price": 12,
           "currency": "EUR",
           "foto":"/Assets/JPG/FideosCalabacin.jpg",
-          "description": "descripcion del producto",
+          "description": "Fideos de calabacín ligeros y frescos cubiertos con un vibrante pesto de albahaca, piñones y parmesano.",
           "type": "Wok"
         },
         {
@@ -127,7 +127,7 @@
           "price": 10,
           "currency": "EUR",
           "foto":"/Assets/JPG/SopaZanahoria.jpg",
-          "description": "descripcion del producto",
+          "description": "Una sopa suave y cremosa de zanahorias dulces y jengibre picante, perfecta para cualquier estación.",
           "type": "Sandwich"
         }
       ]
@@ -146,7 +146,7 @@
           "price": 15,
           "currency": "EUR",
           "foto":"/Assets/JPG/WrapHummus.jpg",
-          "description": "descripcion del producto",
+          "description": "Un wrap lleno de sabores frescos y saludables, con jugoso pollo a la parrilla, cremoso hummus, crujientes verduras y un toque de limón.",
           "type": "Wok"
         },
         {
@@ -154,7 +154,7 @@
           "price": 17,
           "currency": "EUR",
           "foto":"/Assets/JPG/PIZZA-COLIFLOR.jpg",
-          "description": "descripcion del producto",
+          "description": "Base de pizza hecha de coliflor, crujiente y ligera, cubierta con una variedad colorida de vegetales frescos y queso derretido.",
           "type": "Sandwich"
         }
       ]
@@ -173,7 +173,7 @@
           "price": 14,
           "currency": "EUR",
           "foto":"/Assets/JPG/BurritoBowl.jpg",
-          "description": "descripcion del producto",
+          "description": "Un bowl vibrante y nutritivo con quinoa esponjosa, frijoles negros sazonados, maíz dulce, tomates frescos, aguacate y un toque de lima.",
           "type": "Wok"
         },
         {
@@ -181,7 +181,7 @@
           "price": 20,
           "currency": "EUR",
           "foto":"/Assets/JPG/SalmonHorno.jpg",
-          "description": "descripcion del producto",
+          "description": "Filetes de salmón frescos horneados con espárragos tiernos y rodajas de limón, aderezados con aceite de oliva y hierbas. ",
           "type": "Sandwich"
         }
       ]

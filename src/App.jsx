@@ -69,7 +69,6 @@ function App() {
         <Route path="/cart" element={<Carrito cart={cart} setCart={setCart} userId={userId} />} />
       </Routes>
 
-      <Footer />
     </>
   );
 }

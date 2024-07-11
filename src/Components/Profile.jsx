@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import "./Profile.css";
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signOut } from "firebase/auth";
 
 export const Profile = () => {
-  const [userData, setUserData] = useState(null);
+  
   const navigate = useNavigate();
-
+  const [userData, setUserData] = useState(null);
   useEffect(() => {
     const user = localStorage.getItem('user');
     if (user) {
@@ -22,13 +21,13 @@ export const Profile = () => {
   const handleSignOut = () => {
     const auth = getAuth();
     signOut(auth).then(() => {
-      window.dataLayer.push({ ecommerce: null });
-        window.dataLayer.push({
-          event: "logout",
-          
-        });
+      // Limpiar localStorage y enviar evento de logout al dataLayer
       localStorage.removeItem('user');
-      navigate("/");
+      window.dataLayer.push({
+        event: "logout",
+        user_id: null
+      });
+      navigate("/"); // Redirigir a la página principal
     }).catch((error) => {
       console.error('Error al realizar sign out:', error);
     });
@@ -58,3 +57,4 @@ export const Profile = () => {
     </div>
   );
 }
+

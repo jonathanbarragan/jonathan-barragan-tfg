@@ -14,44 +14,34 @@ export const Register = () => {
     const [direction, setDirection] = useState('');
     const [city, setCity] = useState('');
     const navigate = useNavigate();
-
+  
     const handleSubmit = (e) => {
-        e.preventDefault();
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-
-                // Actualizar el perfil del usuario
-                updateProfile(user, {
-                    displayName: name,
-                    // photoURL: "URL_de_foto_si_tienes" // Puedes añadir una URL de foto si es necesario
-                }).then(() => {
-                    console.log("Perfil actualizado:", user);
-
-                    // Guardar dirección y ciudad en Firestore
-                    setDoc(doc(db, "users", user.uid), {
-                        direction: direction,
-                        city: city
-                    });
-
-                    window.dataLayer.push({ ecommerce: null });  // Limpiar el objeto ecommerce anterior.
-                    window.dataLayer.push({
-                        event: "sign_up",
-                        user_id: user.uid,
-                        user_city: city
-                    });
-
-                    navigate("/Login");
-                }).catch((error) => {
-                    console.error("Error actualizando el perfil:", error);
-                });
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(error);
+      e.preventDefault();
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          updateProfile(user, {
+            displayName: name,
+          }).then(() => {
+            setDoc(doc(db, 'users', user.uid), {
+              direction: direction,
+              city: city
             });
-    }
+            window.dataLayer.push({
+              event: "register",
+              user_id: user.uid
+            });
+            navigate("/Profile");
+          }).catch((error) => {
+            console.error('Error updating profile:', error);
+          });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.error(error);
+        });
+    };
 
     return (
         <div>

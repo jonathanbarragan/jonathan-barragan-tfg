@@ -49,6 +49,7 @@ export const Login = () => {
   return (
     <div>
       <div className="container">
+        <h2>Login</h2>
         <form onSubmit={signIn} className="card card-body shadow-lg">
           <label htmlFor="email">Email</label>
           <input

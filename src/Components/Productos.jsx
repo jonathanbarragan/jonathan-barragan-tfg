@@ -3,14 +3,12 @@ import data from "../restaurantes.json";
 import { Button, Image } from "react-bootstrap";
 import "./Productos.css";
 import { useNavigate, useParams } from 'react-router-dom';
-import { Cabecera } from "./Cabecera";
 
-export const Productos = ({addToCart }) => {
+export const Productos = ({ cart, setCart }) => {
     const { restauranteNombre } = useParams();
     const [restaurant, setRestaurant] = useState(null);
     const navigate = useNavigate();
     const [restaurantNames, setRestaurantNames] = useState(() => {
-        // Obtener el valor inicial desde localStorage
         const savedRestaurantNames = localStorage.getItem('restaurantNames');
         return savedRestaurantNames ? JSON.parse(savedRestaurantNames) : [];
     });
@@ -28,32 +26,50 @@ export const Productos = ({addToCart }) => {
         fetchRestaurant();
     }, [restauranteNombre]);
 
-    const handleAddToCart = (product) => {
+    const addToCart = (product) => {
         const productWithRestaurant = {
             ...product,
             restaurant: restaurant.name,
         };
 
-    
-        addToCart(productWithRestaurant);
-         // Actualizar dataLayer después de actualizar restaurantNames
-         window.dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
-         window.dataLayer.push({
-             event: "add_to_cart",
-             ecommerce: {
-                 value: product.value,
-                 currency: product.currency,
-                 coupon: "SUMMER_SALE",
-                 items: [
+        const existingProductIndex = cart.findIndex(
+            (item) => item.name === productWithRestaurant.name && item.restaurant === productWithRestaurant.restaurant
+        );
+
+        let newCart = [];
+        if (existingProductIndex >= 0) {
+            newCart = cart.map((item, index) => {
+                if (index === existingProductIndex) {
+                    return { ...item, quantity: item.quantity + 1 };
+                }
+                return item;
+            });
+        } else {
+            newCart = [...cart, { ...productWithRestaurant, quantity: 1 }];
+        }
+
+        setCart(newCart);
+        handleDataLayerPush(productWithRestaurant);
+    };
+
+    const handleDataLayerPush = (product) => {
+        window.dataLayer.push({ ecommerce: null });  
+        window.dataLayer.push({
+            event: "add_to_cart",
+            ecommerce: {
+                value: product.value,
+                currency: product.currency,
+                coupon: "SUMMER_SALE",
+                items: [
                     {
                         item_id: product.id,
                         item_name: product.name,
-                        affiliation: restaurant.name,
+                        affiliation: product.restaurant,
                         price: product.price,       
                     }
                 ]
-             }
-         });
+            }
+        });
     };
 
     if (!restaurant) {
@@ -76,7 +92,7 @@ export const Productos = ({addToCart }) => {
                                 <p><b>{product.name} </b>- {product.price} {product.currency}</p>
                                 <p>{product.description}</p>
                             </div>
-                            <Button className="add_to_cart" variant="success" onClick={() => handleAddToCart(product)}>Añadir al carrito</Button>
+                            <Button className="add_to_cart" variant="success" onClick={() => addToCart(product)}>Añadir al carrito</Button>
                         </div>
                     </div>
                 ))}

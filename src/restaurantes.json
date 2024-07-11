@@ -56,23 +56,23 @@
       "location": "Metro City",
       "type": ["Wok","Sandwich","Ensalada"],
       "foto":"/Assets/PNG/GreenBites.png",
-      "min_price": 10,
-      "max_price": 30,
+      "min_price": 13,
+      "max_price": 15,
       "avg_time": 40,
       "products": [
         {
-          "name": "Molecule Man",
-          "price": 29,
+          "name": "Tacos de Pescado con salsa de mango",
+          "price": 13,
           "currency": "EUR",
-          "foto":"link foto",
+          "foto":"/Assets/JPG/TacosPescadoMango.jpg",
           "description": "descripcion del producto",
           "type": "Wok"
         },
         {
-          "name": "Molecule Man",
-          "price": 29,
+          "name": "Bowl de Buda con Garbanzo, Verdura Asada",
+          "price": 15,
           "currency": "EUR",
-          "foto":"link foto",
+          "foto":"/Assets/PNG/BowlBudda.png",
           "description": "descripcion del producto",
           "type": "Sandwich"
         }
@@ -83,23 +83,23 @@
       "location": "Metro City",
       "type": ["Wok","Sandwich","Ensalada"],
       "foto":"/Assets/PNG/Vacka.png",
-      "min_price": 20,
-      "max_price": 60,
+      "min_price": 11,
+      "max_price": 14,
       "avg_time": 30,
       "products": [
         {
-          "name": "Molecule Man",
-          "price": 29,
+          "name": "Pechuga de Pollo a la parrilla con Batata Asada",
+          "price": 11,
           "currency": "EUR",
-          "foto":"link foto",
+          "foto":"/Assets/JPG/PechugaPollo.jpg",
           "description": "descripcion del producto",
           "type": "Wok"
         },
         {
-          "name": "Molecule Man",
-          "price": 29,
+          "name": "Pollo al Curry con Leche de Coco y Verduras",
+          "price": 14,
           "currency": "EUR",
-          "foto":"link foto",
+          "foto":"/Assets/JPG/PolloCurry.jpg",
           "description": "descripcion del producto",
           "type": "Sandwich"
         }
@@ -110,23 +110,23 @@
       "location": "Metro City",
       "type": ["Wok","Sandwich","Ensalada"],
       "foto":"/Assets/PNG/RestauranteXavier.png",
-      "min_price": 15,
-      "max_price": 40,
+      "min_price": 10,
+      "max_price": 12,
       "avg_time": 35,
       "products": [
         {
-          "name": "Molecule Man",
-          "price": 29,
+          "name": "Fideos de Calabacín con Pesto",
+          "price": 12,
           "currency": "EUR",
-          "foto":"link foto",
+          "foto":"/Assets/JPG/FideosCalabacin.jpg",
           "description": "descripcion del producto",
           "type": "Wok"
         },
         {
-          "name": "Molecule Man",
-          "price": 29,
+          "name": "Sopa de Zanahoria y Jengibre",
+          "price": 10,
           "currency": "EUR",
-          "foto":"link foto",
+          "foto":"/Assets/JPG/SopaZanahoria.jpg",
           "description": "descripcion del producto",
           "type": "Sandwich"
         }
@@ -138,22 +138,22 @@
       "type": ["Wok","Sandwich","Ensalada"],
       "foto":"/Assets/PNG/TheFork.png",
       "min_price": 15,
-      "max_price": 40,
+      "max_price": 17,
       "avg_time": 35,
       "products": [
         {
-          "name": "Molecule Man",
-          "price": 29,
+          "name": "Wrap de Pollo y Hummus",
+          "price": 15,
           "currency": "EUR",
-          "foto":"link foto",
+          "foto":"/Assets/JPG/WrapHummus.jpg",
           "description": "descripcion del producto",
           "type": "Wok"
         },
         {
-          "name": "Molecule Man",
-          "price": 29,
+          "name": "Pizza de Coliflor con Vegetales",
+          "price": 17,
           "currency": "EUR",
-          "foto":"link foto",
+          "foto":"/Assets/JPG/PIZZA-COLIFLOR.jpg",
           "description": "descripcion del producto",
           "type": "Sandwich"
         }
@@ -164,28 +164,28 @@
       "location": "Metro City",
       "type": ["Wok","Sandwich","Ensalada"],
       "foto":"/Assets/PNG/Elektra.png",
-      "min_price": 15,
-      "max_price": 40,
+      "min_price": 14,
+      "max_price": 20,
       "avg_time": 35,
       "products": [
         {
-          "name": "Molecule Man",
-          "price": 29,
+          "name": "Burrito Bowl de Quinoa y Frijoles Negros",
+          "price": 14,
           "currency": "EUR",
-          "foto":"link foto",
+          "foto":"/Assets/JPG/BurritoBowl.jpg",
           "description": "descripcion del producto",
           "type": "Wok"
         },
         {
-          "name": "Molecule Man",
-          "price": 29,
+          "name": "Salmón al Horno con Espárragos y Limón",
+          "price": 20,
           "currency": "EUR",
-          "foto":"link foto",
+          "foto":"/Assets/JPG/SalmonHorno.jpg",
           "description": "descripcion del producto",
           "type": "Sandwich"
         }
       ]
-    }
+    } 
   ]
   
 }

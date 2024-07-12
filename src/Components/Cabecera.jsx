@@ -16,7 +16,7 @@ export const Cabecera = ({ searchTerm, setSearchTerm, initialShowResults }) => {
     return (
         <div className="header-container">
             <Link to="/"> 
-                <img className="logo-web" src="/Assets/PNG/logo.png" />
+                <img id="logo-home" className="logo-web" src="/Assets/PNG/logo.png" />
             </Link >
             <div className='search-bar'>
                 <input
@@ -25,15 +25,15 @@ export const Cabecera = ({ searchTerm, setSearchTerm, initialShowResults }) => {
                     onChange={(e) => setSearchTerm(e.target.value)}
                     placeholder="Introduce una búsqueda"
                 />
-                <div onClick={handleSearchClick} className='search-bar-Icon'>
+                <div id="searchIcon" onClick={handleSearchClick} className='search-bar-Icon'>
                     <SearchIcon />
                 </div>
             </div>
             <Link to="/Cart">
-                <Image className="cart" src="/Assets/PNG/cart.png" />
+                <Image id="cart" className="cart" src="/Assets/PNG/cart.png" />
             </Link>
             <Link to="/Profile">
-                <Image className="profile" src="/Assets/PNG/profile.png" />
+                <Image id="profile" className="profile" src="/Assets/PNG/profile.png" />
             </Link>
         </div>
     );

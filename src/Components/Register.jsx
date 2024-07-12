@@ -58,8 +58,8 @@ export const Register = () => {
                     <input value={direction} onChange={(e) => setDirection(e.target.value)} type="text" placeholder="Av. Diagonal, 24, 3o 2a" id="direction" name="direction" className="textBox" />
                     <label htmlFor="city">City </label>
                     <input value={city} onChange={(e) => setCity(e.target.value)} type="text" placeholder="Barcelona" id="city" name="city" className="textBox" />
-                    <Button type="submit" className="btn-login">Register</Button>
-                    <Button href="/Login" className="btn-register">Si ya tienes una cuenta, Inicia Sesión</Button>
+                    <Button id="register" type="submit" className="btn-register">Register</Button>
+                    <Button id="login" href="/Login" className="btn-login">Si ya tienes una cuenta, Inicia Sesión</Button>
                 </form>
             </div>
         </div>

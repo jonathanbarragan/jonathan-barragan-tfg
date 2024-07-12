@@ -73,10 +73,10 @@ export const Login = () => {
             className="textBox"
             required
           />
-          <Button type="submit" className="btn-login" disabled={loading}>
+          <Button id="login" type="submit" className="btn-login" disabled={loading}>
             {loading ? "Cargando..." : "Log In"}
           </Button>
-          <Button href="/Register" className="btn-register" disabled={loading}>
+          <Button id="register" href="/Register" className="btn-register" disabled={loading}>
             Si no tienes una cuenta, Registrate
           </Button>
           {error && <p className="error">{error}</p>}

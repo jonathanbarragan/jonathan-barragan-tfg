@@ -42,7 +42,7 @@ export const Resultados = ({ search }) => {
         <div className="restaurante-fondo">
             <div className="restaurants-container">
                 <h2>Restaurantes:</h2>
-                <div className="sort-dropdown">
+                <div id="sort-dropdown" className="sort-dropdown">
                     <label htmlFor="sort">Ordenar por: </label>
                     <select id="sort" onChange={handleSortChange}>
                         <option value="none">Seleccionar</option>

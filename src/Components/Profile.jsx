@@ -46,7 +46,7 @@ export const Profile = () => {
                   <p><strong>Dirección:</strong> {userData.direction || 'No especificada'}</p>
                   <p><strong>Ciudad:</strong> {userData.city || 'No especificada'}</p>
                 </div>
-                <Button onClick={handleSignOut} variant="danger" className="mt-3">Cerrar sesión</Button>
+                <Button id="logout" onClick={handleSignOut} variant="danger" className="mt-3">Cerrar sesión</Button>
               </div>
             </Col>
           </Row>

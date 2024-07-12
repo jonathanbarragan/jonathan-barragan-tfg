@@ -79,7 +79,7 @@ export const Productos = ({ cart, setCart }) => {
     return (
       <div className="fondo-product">
         <div className="productos-container">
-            <button onClick={() => navigate(-1)}>Volver</button>
+            <Button id="return" onClick={() => navigate(-1)}>Volver</Button>
             <h2>{restaurant.name}</h2>
             <p>{restaurant.location}</p>
             <h3>Productos:</h3>
@@ -92,7 +92,7 @@ export const Productos = ({ cart, setCart }) => {
                                 <p><b>{product.name} </b>- {product.price} {product.currency}</p>
                                 <p>{product.description}</p>
                             </div>
-                            <Button className="add_to_cart" variant="success" onClick={() => addToCart(product)}>Añadir al carrito</Button>
+                            <Button id="add_to_cart" className="add_to_cart" variant="success" onClick={() => addToCart(product)}>Añadir al carrito</Button>
                         </div>
                     </div>
                 ))}

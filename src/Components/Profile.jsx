@@ -26,7 +26,7 @@ export const Profile = () => {
       localStorage.removeItem('user');
       window.dataLayer.push({
         event: "logout",
-        user_id: ""
+        user_id: null
       });
       navigate("/"); // Redirigir a la página principal
     }).catch((error) => {

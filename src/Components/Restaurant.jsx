@@ -54,7 +54,7 @@ export const Resultados = ({ search }) => {
 
                 <div className="resultados-container">
                     {filteredData.map(item => (
-                        <div className="restaurante-card" key={item.name} onClick={() => handleRestaurantClick(item)}>
+                        <div id="restaurant" className="restaurante-card" key={item.name} onClick={() => handleRestaurantClick(item)}>
                             <Image src={item.foto} className="restaurante-foto" />
                             <h2>{item.name}</h2>
                             <p>{item.location}</p>

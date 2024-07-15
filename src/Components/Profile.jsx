@@ -7,6 +7,7 @@ export const Profile = () => {
   
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
+  
   useEffect(() => {
     const user = localStorage.getItem('user');
     if (user) {
@@ -25,7 +26,7 @@ export const Profile = () => {
       localStorage.removeItem('user');
       window.dataLayer.push({
         event: "logout",
-        user_id: null
+        user_id: undefined
       });
       navigate("/"); // Redirigir a la página principal
     }).catch((error) => {

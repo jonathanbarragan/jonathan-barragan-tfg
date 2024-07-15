@@ -85,7 +85,7 @@ export const Carrito = ({ cart, setCart }) => {
     return (
         <div className='fondo-cart'>
             <div class="cart-container">
-                <button onClick={() => navigate(-1)}>Volver</button>
+                <Button id='return' onClick={() => navigate(-1)}>Volver</Button>
 
                 <h2>Productos en el carrito:</h2>
                 
@@ -101,21 +101,21 @@ export const Carrito = ({ cart, setCart }) => {
                                 <p>Restaurante: {product.restaurant}</p>
                             </div>
                             <div class="cart-quantity">
-                                <Button variant='light' onClick={() => disminuirCantidad(index)}>-</Button>
+                                <Button id='disminuir' variant='light' onClick={() => disminuirCantidad(index)}>-</Button>
                                 <input type="number" value={cantidades[index]} onChange={(e) => {
                                     const newCantidades = [...cantidades];
                                     newCantidades[index] = parseInt(e.target.value) || 1;
                                     setCantidades(newCantidades);
                                 }} />
-                                <Button variant='light' onClick={() => aumentarCantidad(index)}>+</Button>
-                                <Button variant='danger' onClick={() => removeFromCart(index)}>Remove</Button>
+                                <Button id='aumentar' variant='light' onClick={() => aumentarCantidad(index)}>+</Button>
+                                <Button id='remove' variant='danger' onClick={() => removeFromCart(index)}>Remove</Button>
                             </div>
                         </div>
                     ))}
                 </div>
                 <div className='cart-total'>
                     <h3>Total: {calcularTotal()}€</h3>
-                    <Button variant='success' onClick={handlePurchase}>Realizar Compra</Button>
+                    <Button id='purchase' variant='success' onClick={handlePurchase}>Realizar Compra</Button>
                     </div>
             </div>
         </div>

@@ -18,12 +18,14 @@ function App() {
     return savedCart ? JSON.parse(savedCart) : [];
   });
   const [userId, setUserId] = useState(null); // Inicialmente null
+  const [user_logged, setUserLogged] = useState(false);
 
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUserId(user.uid);
+        setUserLogged(true);
         // Push al dataLayer cuando el usuario está autenticado
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
@@ -32,6 +34,7 @@ function App() {
         });
       } else {
         setUserId(null); // Si no hay usuario autenticado, user_id es null
+        setUserLogged(false);
       }
     });
 
@@ -60,8 +63,8 @@ function App() {
       {!isHomePage && <Cabecera searchTerm={searchTerm} setSearchTerm={setSearchTerm} />}
 
       <Routes>
-        <Route path="/" element={<Home searchTerm={searchTerm} setSearchTerm={setSearchTerm} />} />
-        <Route path="/Login" element={<Login />} />
+        <Route path="/" element={<Home searchTerm={searchTerm} setSearchTerm={setSearchTerm} user_logged={user_logged}/>} />
+        <Route path="/Login" element={<Login user_logged={user_logged}/>} />
         <Route path="/Register" element={<Register />} />
         <Route path="/Profile" element={<Profile userId={userId} handleLogout={handleLogout} />} />
         <Route path="/Restaurant" element={<Resultados search={searchTerm} userId={userId} />} />

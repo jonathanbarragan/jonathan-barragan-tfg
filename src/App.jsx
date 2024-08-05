@@ -50,6 +50,7 @@ function App() {
         user_id: null // Poner user_id a null al hacer logout
       });
       localStorage.removeItem('user');
+      setUserLogged(false);
     }).catch((error) => {
       console.error('Error al realizar sign out:', error);
     });

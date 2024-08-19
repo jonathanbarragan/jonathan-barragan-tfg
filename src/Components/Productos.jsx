@@ -3,6 +3,8 @@ import data from "../restaurantes.json";
 import { Button, Image } from "react-bootstrap";
 import "./Productos.css";
 import { useNavigate, useParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Productos = ({ cart, setCart }) => {
     const { restauranteNombre } = useParams();
@@ -50,6 +52,8 @@ export const Productos = ({ cart, setCart }) => {
 
         setCart(newCart);
         handleDataLayerPush(productWithRestaurant);
+
+        toast.success(`${product.name} añadido al carrito!`);
     };
 
     const handleDataLayerPush = (product) => {
@@ -98,6 +102,7 @@ export const Productos = ({ cart, setCart }) => {
                 ))}
             </div>
         </div>
+        <ToastContainer autoClose={3000} />
       </div>
     );
 };
